@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkout_date: 2021-02-08 18:27:40
+  checkin_date: 2021-02-08 18:27:40
+  event_description: MyString
+
+two:
+  checkout_date: 2021-02-08 18:27:40
+  checkin_date: 2021-02-08 18:27:40
+  event_description: MyString
