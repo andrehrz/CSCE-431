@@ -1,2 +1,19 @@
 <h1>Equipments#edit</h1>
-<p>Find me in app/views/equipments/edit.html.erb</p>
+
+<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+
+<div class="equipments edit">
+  <h2>Edit Equipment</h2>
+
+  <%= form_for(@equipment) do |f| %>
+    
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+
+    <div class="form-buttons">
+      <%= f.submit("Update Equipment") %>
+    </div>
+
+  <% end %>
+</div>
+

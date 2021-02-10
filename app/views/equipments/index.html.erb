@@ -1,2 +1,41 @@
 <h1>Equipments#index</h1>
-<p>Find me in app/views/equipments/index.html.erb</p>
+
+
+<div class="equipments index">
+
+    <h2> Equipment </h2>
+
+    <% flash.each do |type, msg| %>
+        <div style="color:red;">
+        <%= msg %>
+        </div>
+    <% end %>
+
+    <br />
+
+    <table class="listing" summary="Book List">
+        <tr class="header">
+            <th> ID </th>
+            <th> Name </th>
+            <th> Description </th>
+            <th> Available </th>
+            <th> Actions </th>
+        </tr>
+        <% @equipments.each do |equipment| %>
+        <tr>
+            <td><%= equipment.id%></td>
+            <td><%= equipment.name%></td>
+            <td><%= equipment.description%></td>
+            <td><%= equipment.available %> </td>
+            <td class="actions">
+                <%= link_to("Show", equipment_path(equipment), :class => "action show") %>
+                <%= link_to("Edit", edit_equipment_path(equipment), :class => "action edit") %>
+                <%= link_to("Delete", delete_equipment_path(equipment), :class => "action delete") %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br/>
+    <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
+
+</div>

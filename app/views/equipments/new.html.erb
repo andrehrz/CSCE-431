@@ -1,2 +1,19 @@
 <h1>Equipments#new</h1>
-<p>Find me in app/views/equipments/new.html.erb</p>
+
+<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+
+<div class="equipments new">
+  <h2>Create Equipment</h2>
+
+  <%= form_for(@equipment, :url => equipments_path, :method => 'post') do |f| %>
+
+    
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Equipment") %>
+    </div>
+
+  <% end %>
+</div>
