@@ -28,9 +28,9 @@
             <td><%= reservation.checkout_date%></td>
             <td><%= reservation.checkin_date %> </td>
             <td class="actions">
-                <%= link_to("Show", reservation_path(equipment), :class => "action show") %>
-                <%= link_to("Edit", edit_reservation_path(equipment), :class => "action edit") %>
-                <%= link_to("Delete", delete_reservation_path(equipment), :class => "action delete") %>
+                <%= link_to("Show", reservation_path(reservation), :class => "action show") %>
+                <%= link_to("Edit", edit_reservation_path(reservation), :class => "action edit") %>
+                <%= link_to("Delete", delete_reservation_path(reservation), :class => "action delete") %>
             </td>
         </tr>
         <% end %>
