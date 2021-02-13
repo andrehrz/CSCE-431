@@ -1,2 +1,17 @@
 <h1>Reservations#delete</h1>
-<p>Find me in app/views/reservations/delete.html.erb</p>
+<%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
+
+<div class="reservations delete">
+  <h2>Delete reservation</h2>
+
+  <%= form_for(@reservation, :method => 'delete') do |f| %>
+
+
+    <p>Are You Sure</p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete reservation") %>
+    </div>
+
+  <% end %>
+</div>

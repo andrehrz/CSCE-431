@@ -35,6 +35,13 @@ class ReservationsController < ApplicationController
   end
 
   def delete
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to(reservations_path) #, notice:"#{@book.Title} Was Deleted !")
   end
 
   def reservation_params
