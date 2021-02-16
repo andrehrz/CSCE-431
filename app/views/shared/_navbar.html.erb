@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to 'DJOA Equipment Tracker', root_path, class: 'navbar-brand'%>
+    <!--<a class="navbar-brand" href="#">DJOA Equipment Tracker</a>-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <!--<a class="nav-link active" aria-current="page" href="#">Home</a>-->
+          <%= link_to 'Home', root_path, class: 'nav-link active'%>
+        </li>
+
+        <% if account_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to 'Dashboard', edit_account_registration_path, class: 'nav-link'%>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Equipment</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reservations</a>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Sign Out', destroy_account_session_path, method: :delete, class: 'nav-link'%>
+            </li>
+
+        <% end %>
+
+
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
