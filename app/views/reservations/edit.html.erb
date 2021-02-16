@@ -1,2 +1,18 @@
 <h1>Reservations#edit</h1>
-<p>Find me in app/views/reservations/edit.html.erb</p>
+
+<%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
+
+<div class="reservations edit">
+  <h2>Edit Reservation</h2>
+
+  <%= form_for(@reservation) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+
+    <div class="form-buttons">
+      <%= f.submit("Update Reservation") %>
+    </div>
+
+  <% end %>
+</div>
