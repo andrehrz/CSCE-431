@@ -1,0 +1,33 @@
+<h1>Equipment Check In / Check Out</h1>
+<%= link_to("<< Back To Equipment", '#', :class => 'back-link')%>
+
+<div class="equipments index">
+
+    <table class="listing" summary="Equipment List">
+        <tr class="header">
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Available </th>
+            <th style="padding:0 15px;"> Current User </th>
+            <th style="padding:0 15px;"> Date Checked Out </th>
+            <th style="padding:0 15px;"> Return By Date </th>
+            <th style="padding:0 15px;"> Actions </th>
+        </tr>
+        <% @equipments.each do |equipment| %>
+        <tr>
+            <td style="padding:0 15px;"><%= equipment.id%></td>
+            <td style="padding:0 15px;"><%= equipment.name%></td>
+            <td style="padding:0 15px;"><%= equipment.description%></td>
+            <td style="padding:0 15px;"><%= equipment.available%></td>
+            <td style="padding:0 15px;">to do</td>
+            <td style="padding:0 15px;">to do</td>
+            <td style="padding:0 15px;">to do</td>
+            <td style="padding:0 15px;"class="actions">
+                <%= link_to("Check In", '#', :class => "action check_in") %>
+                <%= link_to("Check Out", '#', :class => "action check_out") %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

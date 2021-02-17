@@ -1,33 +1,32 @@
-<h1>Equipments#index</h1>
-
+<h1>Admin Equipment Management</h1>
+<!--<%= link_to("<< Back To Equipment", "#", :class => 'action equip_list')%>-->
 
 <div class="equipments index">
 
-    <h2> Equipment </h2>
-
+   <!--<h2> Equipment </h2>-->
     <% flash.each do |type, msg| %>
         <div style="color:red;">
         <%= msg %>
         </div>
     <% end %>
-
     <br />
 
-    <table class="listing" summary="Book List">
+    <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
+    <table class="listing" summary="Equipment List">
         <tr class="header">
-            <th> ID </th>
-            <th> Name </th>
-            <th> Description </th>
-            <th> Available </th>
-            <th> Actions </th>
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Available </th>
+            <th style="padding:0 15px;"> Actions </th>
         </tr>
         <% @equipments.each do |equipment| %>
         <tr>
-            <td><%= equipment.id%></td>
-            <td><%= equipment.name%></td>
-            <td><%= equipment.description%></td>
-            <td><%= equipment.available %> </td>
-            <td class="actions">
+            <td style="padding:0 15px;"><%= equipment.id%></td>
+            <td style="padding:0 15px;"><%= equipment.name%></td>
+            <td style="padding:0 15px;"><%= equipment.description%></td>
+            <td style="padding:0 15px;"><%= equipment.available %> </td>
+            <td style="padding:0 15px;" class="actions">
                 <%= link_to("Show", equipment_path(equipment), :class => "action show") %>
                 <%= link_to("Edit", edit_equipment_path(equipment), :class => "action edit") %>
                 <%= link_to("Delete", delete_equipment_path(equipment), :class => "action delete") %>
@@ -35,7 +34,4 @@
         </tr>
         <% end %>
     </table>
-    <br/>
-    <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
-
 </div>
