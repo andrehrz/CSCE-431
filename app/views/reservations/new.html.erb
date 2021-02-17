@@ -1,2 +1,19 @@
 <h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+
+<%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
+
+<div class="reservations new">
+  <h2>Create Reservation</h2>
+
+  <%= form_for(@reservation, :url => reservations_path, :method => 'post') do |f| %>
+
+
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Reservation") %>
+    </div>
+
+  <% end %>
+</div>

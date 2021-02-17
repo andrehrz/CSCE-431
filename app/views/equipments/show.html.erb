@@ -1,2 +1,28 @@
 <h1>Equipments#show</h1>
-<p>Find me in app/views/equipments/show.html.erb</p>
+
+<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+
+<div class="equipments show">
+  <h2>Show Book</h2>
+
+  <table summary="equipment detail view">
+    <tr>
+      <th>ID</th>
+      <td><%= @equipment.id %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><%= @equipment.name %></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><%= @equipment.description%></td>
+    </tr>
+    <tr>
+      <th>Available</th>
+      <td><%= @equipment.available %></td>
+    </tr>
+    
+  </table>
+
+</div>

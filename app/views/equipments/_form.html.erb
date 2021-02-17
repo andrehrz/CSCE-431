@@ -1,0 +1,14 @@
+<table summary="Equipment form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+      </tr>
+      <tr>
+        <th>Available</th>
+        <td><%= f.select(:available, options_for_select([['Yes', true], ['No', false]]), { include_blank: true }) %></td>
+      </tr>
+    </table>
