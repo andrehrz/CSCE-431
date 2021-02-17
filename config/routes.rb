@@ -14,8 +14,11 @@ Rails.application.routes.draw do
   # get 'users/new'
   # get 'users/edit'
   # get 'users/delete'
+  
+  devise_for :accounts
 
-  #root 'equipments#index'
+  root to: "home#index"
+  get 'home/index'
   
   resources :equipments do
     member do
