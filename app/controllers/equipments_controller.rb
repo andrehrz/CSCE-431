@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+
   def index
     @equipments = Equipment.order('id ASC');
   end
@@ -9,7 +10,6 @@ class EquipmentsController < ApplicationController
 
   def new
     @equipment = Equipment.new;
-
   end
 
   def create
@@ -44,6 +44,17 @@ class EquipmentsController < ApplicationController
     @equipment = Equipment.find(params[:id])
     @equipment.destroy
     redirect_to(equipments_path) #, notice:"#{@book.Title} Was Deleted !")
+  end
+
+  def equip_list
+    @equipments = Equipment.order('id ASC');
+    render('equipments/equip_list')
+  end
+
+  def check_in
+  end
+
+  def check_out
   end
 
   def equipment_params
