@@ -33,19 +33,23 @@ ActiveRecord::Schema.define(version: 2021_02_13_203842) do
   end
 
   create_table "equipment", force: :cascade do |t|
+    t.bigint "reservation_id"
     t.string "name"
     t.string "description"
     t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_equipment_on_reservation_id"
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.bigint "account_id"
     t.datetime "checkout_date"
     t.datetime "checkin_date"
     t.string "event_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_reservations_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|

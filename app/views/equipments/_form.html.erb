@@ -9,6 +9,6 @@
       </tr>
       <tr>
         <th>Available</th>
-        <td><%= f.select(:available, options_for_select([['Yes', true], ['No', false]]), { include_blank: true }) %></td>
+        <td><%= f.select(:available, options_for_select([['Yes', true], ['No', false]]), { include_blank: false }) %></td>
       </tr>
     </table>
