@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'equipments/equip_list'
   resources :equipments do
     member do
+      get :check_out
+      get :check_in
+      get :show_for_members
       get :delete
     end
   end
