@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   # EQUIPMENT ROUTES (Non ID routes cannot go into rescource)
   get 'equipments/index'
   get 'equipments/equip_list'
+  get 'equipments/member_show'
   resources :equipments do
     member do
       get :check_out
@@ -40,7 +41,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # Unused should delete later
+  # USER ROUTES 
+  #get 'users/edit', to: 
   resources :users do
     member do
       get :delete

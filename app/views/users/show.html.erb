@@ -1,2 +1,47 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Users noel #show</h1>
+<%= link_to("<< Back to Accounts", users_path, :class => 'back-link') %>
+
+<div class="users show">
+  <h2>Account Info</h2> 
+
+  <table summary="account info view">
+    <tr>
+      <th>ID</th>
+      <td><%= @users.id %></td>
+    </tr>
+    <tr>
+      <th>First Name</th>
+      <td><%= @users.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @users.last_name%></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @users.email %></td>
+    </tr> 
+    <tr>
+        <th>Phone Number</th>
+        <td><%= @users.phone_number %></td>
+     </tr>
+    <tr>
+        <th>Secondary Contact</th>
+        <td><%= @users.secondary_contact%></td>
+    </tr>
+    <tr>
+        <th>Account Created</th>
+        <td><%= @users.created_at %></td>
+     </tr>
+    <tr>
+        <th>Account Updated</th>
+        <td><%= @users.updated_at %></td>
+    </tr>
+    <tr>
+        <th>Admin</th>
+         <td><%= @users.is_admin%></td>
+    </tr>
+    
+  </table>
+
+</div>

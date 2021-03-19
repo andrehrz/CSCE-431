@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: chrisplum
-  password: 'cpadmin'
+  username: iliana
+  password: 071199
   host: localhost
   port: 5432
   # For details on connection pooling, see Rails configuration guide
@@ -27,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: CSCE-431_development
+  database: CSCE-431
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -36,7 +36,12 @@ development:
   #username: bookcollection_christopher_plummer
 
   # The password associated with the postgres role (username).
-  #password:
+  #password
+  username: iliana
+
+  # The password associated with the postgres role (username).
+  password: 071199
+
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -88,3 +93,4 @@ production:
   database: CSCE-431_plummer_production
   username: CSCE-431
   password: <%= ENV['CSCE-431_DATABASE_PASSWORD'] %>
+
