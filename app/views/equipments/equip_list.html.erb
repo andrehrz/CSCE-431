@@ -1,0 +1,75 @@
+<h1>Equipment Check In / Check Out</h1>
+
+<div class="equipments index">
+    <table class="listing" summary="Equipment List">
+        <tr class="header">
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Available </th>
+            <th style="padding:0 15px;"> Current User </th>
+            <th style="padding:0 15px;"> Date Checked Out </th>
+            <th style="padding:0 15px;"> Return By Date </th>
+            <th style="padding:0 15px;"> Actions </th>
+        </tr>
+        <% @equipments.each do |equipment| %>
+        <tr>
+            <td style="padding:0 15px;"><%= equipment.id%></td>
+            <td style="padding:0 15px;"><%= equipment.name%></td>
+            <td style="padding:0 15px;"><%= equipment.description%></td>
+            <td style="padding:0 15px;"><%= equipment.available%></td>
+
+            <td style="padding:0 15px;">
+            <% if equipment.reservation%>
+            <%= equipment.reservation.account.email %>
+            <% end %>
+            </td>
+
+            <td style="padding:0 15px;">            
+            <% if equipment.reservation%>
+            <%= equipment.reservation.checkout_date %>
+            <% end %>
+            </td>
+
+            <td style="padding:0 15px;">            
+            <% if equipment.reservation%>
+            <%= equipment.reservation.checkin_date %>
+            <% end %>
+            </td>
+
+            <td style="padding:0 15px;"class="actions">
+                <%= link_to("Check In", check_in_equipment_path(equipment), :class => "action check_out") %>
+                <%= link_to("Check Out", check_out_equipment_path(equipment), :class => "action check_in") %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<br/>
+<h4>My Checked Out Items</h4>
+<div class="my equipments">
+    <table class="listing" summary="Equipment List">
+        <tr class="header">
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Date Checked Out </th>
+            <th style="padding:0 15px;"> Return By Date </th>
+            <!-- <th style="padding:0 15px;"> Actions </th> -->
+        </tr>
+        <% current_account.equipments.each do |equipment| %>
+        <tr>
+            <td style="padding:0 15px;"><%= equipment.id%></td>
+            <td style="padding:0 15px;"><%= equipment.name%></td>
+            <td style="padding:0 15px;"><%= equipment.description%></td>
+            <td style="padding:0 15px;">to do</td>
+            <td style="padding:0 15px;">to do</td>
+            <!--<td style="padding:0 15px;"class="actions">
+                <%= link_to("Check In", check_in_equipment_path(equipment), :class => "action check_out") %>
+                <%= link_to("Check Out", check_out_equipment_path(equipment), :class => "action check_in") %>
+            </td> -->
+        </tr>
+        <% end %>
+    </table>
+</div>

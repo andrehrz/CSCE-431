@@ -10,25 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_002739) do
+ActiveRecord::Schema.define(version: 2021_02_13_203842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "secondary_contact"
+    t.boolean "is_admin", default: false
+    t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
   create_table "equipment", force: :cascade do |t|
+    t.bigint "reservation_id"
     t.string "name"
     t.string "description"
     t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_equipment_on_reservation_id"
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.bigint "account_id"
     t.datetime "checkout_date"
     t.datetime "checkin_date"
     t.string "event_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_reservations_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
