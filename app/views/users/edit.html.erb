@@ -1,4 +1,4 @@
-<%= link_to("<< Back to Accounts", users_path, :class => 'back-link') %>
+
 
 <div class="users edit">
   <h2>Edit Account</h2>
@@ -6,8 +6,7 @@
   <h2>Sign up</h2>
 
 <div class="sign-up-form" style = "margin-left: 1%;">
-  <%= form_for(@users) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(@users, url: {action: "update"}) do |f| %>
 
     <div class="field">
       <%= f.label :first_name %><br />
@@ -39,24 +38,8 @@
     </div>
     <br/>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
     <div class="form-buttons">
       <%= f.submit("Update Account") %>
     </div>
   <% end %>
 </div>
-
-<%= render "devise/shared/links" %>
-

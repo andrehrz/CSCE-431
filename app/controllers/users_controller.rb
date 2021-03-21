@@ -46,9 +46,7 @@ class UsersController < ApplicationController
     redirect_to(users_path) #, notice:"#{@book.Title} Was Deleted !")
   end
 
-  #change these params
   def user_params
-    params.require(:reservation).permit(:event_description, :checkout_date, :checkin_date)
+    params.require(:account).permit(:first_name, :last_name, :email, :phone_number, :secondary_contact)
   end
 end
-

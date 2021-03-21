@@ -1,7 +1,7 @@
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
-# gem install pg
+#   gem install pg
 # On macOS with Homebrew:
 #   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 # On macOS with MacPorts:
@@ -17,10 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: iliana
-  password: 071199
-  host: localhost
-  port: 5432
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -33,24 +29,19 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: bookcollection_christopher_plummer
+  username: rahulshah
 
   # The password associated with the postgres role (username).
-  #password
-  username: iliana
-
-  # The password associated with the postgres role (username).
-  password: 071199
-
+  password: 09181999
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -64,9 +55,10 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+
 test:
   <<: *default
-  database: CSCE-431_test
+  database: pop_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,7 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: CSCE-431_plummer_production
-  username: CSCE-431
-  password: <%= ENV['CSCE-431_DATABASE_PASSWORD'] %>
-
+  database: pop_production
+  username: pop
+  password: <%= ENV['POP_DATABASE_PASSWORD'] %>
