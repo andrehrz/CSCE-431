@@ -29,3 +29,33 @@
     </div>
     <br/>
 </div>
+<br/>
+
+<h4>My Future Reservations</h4>
+<div class="my equipments">
+    <table class="listing" summary="Equipment List">
+        <tr class="header">
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Reserved Date </th>
+            <th style="padding:0 15px;"> Return By Date </th>
+            <th style="padding:0 15px;"> Actions </th>
+        </tr>
+        <% current_account.reservations.each do |reservation| %>
+        <% if reservation.future_equip_id != nil %>
+        <% @future_item = Equipment.find(reservation.future_equip_id) %>
+        <tr>
+            <td style="padding:0 15px;"><%= @future_item.id%></td>
+            <td style="padding:0 15px;"><%= @future_item.name%></td>
+            <td style="padding:0 15px;"><%= @future_item.description%></td>
+            <td style="padding:0 15px;"><%= reservation.checkout_date %></td>
+            <td style="padding:0 15px;"><%= reservation.checkin_date %></td>
+            <td style="padding:0 15px;"class="actions">
+                <%= link_to("Cancel", cancel_item_reservation_path(reservation), :class => "action cancel_item") %>
+            </td>
+        </tr>
+        <% end %>
+        <% end %>
+    </table>
+</div>

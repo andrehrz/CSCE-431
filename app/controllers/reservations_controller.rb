@@ -5,6 +5,9 @@ class ReservationsController < ApplicationController
   def index
     # Create a new reservation for the date
     @reservation = Reservation.new
+
+    # Display Reservations That Are Mine
+    @reservations = Reservation.order('id DESC')
   end
 
   def show
@@ -18,7 +21,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to(equipments_path) # , notice:"#{@book.Title} Was Added !")
+      redirect_to(equipments_path) 
     else
       render('new')
     end
@@ -31,7 +34,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
-      redirect_to(reservation_path(@reservation)) # , notice:"#{@book.Title} Was Updated !")
+      redirect_to(reservation_path(@reservation)) 
     else
       render('edit')
     end
@@ -75,18 +78,14 @@ class ReservationsController < ApplicationController
   end
 
   def reserve_item
-    params.each do |key,value|
-       Rails.logger.warn "Param #{key}: #{value}"
-    end
+    # params.each do |key,value|
+    #    Rails.logger.warn "Param #{key}: #{value}"
+    # end
 
     # Use passed in date, check if there is no reservation for the same item on that day
     @event_string = params[:event]
     @future_date = (params[:cd]).to_datetime
     @return_date = @future_date + 1.days
-
-    puts @future_date
-    puts @return_date
-    puts @event_string
 
     #@future_date = DateTime.now + 1 # Either as post params or Reservation hashes
     #@return_date = @future_date + 1 # Either as post params or  Reservation hashes
@@ -111,9 +110,11 @@ class ReservationsController < ApplicationController
       @reservation.future_equip_id = @equipment.id
 
       if @reservation.save # Protect
-        redirect_to(reservations_future_reservations_path) # Possibly change to do a show action
+        redirect_to(reservations_path) # Possibly change to do a show action
+        flash[:alert] = 'Notice: Reservation Complete!'
       else 
-        redirect_to(root_path)
+        redirect_to(reservations_path)
+        flash[:alert] = 'Notice: Error making reservation!'
       end
     else
       redirect_to(reservations_path)
@@ -135,7 +136,7 @@ class ReservationsController < ApplicationController
       @reservation.save
       # Delete the reservation (possibly).
       # Re-render
-      redirect_to(reservations_future_reservations_path) # Possibly change to do a show action
+      redirect_to(reservations_path) # Possibly change to do a show action
     end
   end
 

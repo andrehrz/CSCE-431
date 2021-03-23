@@ -1,17 +1,15 @@
 <h1>Reservations#index</h1>
 
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
+<br />
 
 <div class="reservations index">
 
     <h2> Reservation </h2>
-
-    <% flash.each do |type, msg| %>
-        <div style="color:red;">
-        <%= msg %>
-        </div>
-    <% end %>
-
-    <br />
 
     <table class="listing" summary="Reservation List">
         <tr class="header">
