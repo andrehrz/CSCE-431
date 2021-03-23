@@ -1,2 +1,32 @@
-<h1>Users#delete</h1>
-<p>Find me in app/views/users/delete.html.erb</p>
+<%= link_to("<< Back to List", users_path, :class => "back-link")%>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<div>
+    <h2>Delete Selected User</h2>
+
+    <%= form_for(@user, url: {action: "destroy"}, :method => 'delete') do |f| %>
+        <p>Are you sure you want to delete this user?</p>
+        <table summary="account info view">
+        <tr>
+            <th>First Name</th>
+            <td><%= @user.first_name%></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><%= @user.last_name %></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><%= @user.email%></td>
+        </tr>
+        </table>
+        <div class="form-buttons">
+            <%= f.submit("Delete User")%>
+        </div>
+    <% end %>
+</div>

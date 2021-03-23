@@ -1,0 +1,41 @@
+<h1>Reservations#index</h1>
+
+
+<div class="reservations index">
+
+    <h2> Reservation </h2>
+
+    <% flash.each do |type, msg| %>
+        <div style="color:red;">
+        <%= msg %>
+        </div>
+    <% end %>
+
+    <br />
+
+    <table class="listing" summary="Reservation List">
+        <tr class="header">
+            <th> ID </th>
+            <th> Event Description </th>
+            <th> Checkout Date </th>
+            <th> Checkin Date </th>
+            <th> Actions </th>
+        </tr>
+       <% @reservations.where('checkout_date >= ?', DateTime.now.utc).each do |reservation| %>
+        <tr>
+            <td style="padding:0 15px;"><%= reservation.id%></td>
+            <td style="padding:0 15px;"><%= reservation.event_description%></td>
+            <td style="padding:0 15px;"><%= reservation.checkout_date%></td>
+            <td style="padding:0 15px;"><%= reservation.checkin_date %> </td>
+            <td class="actions">
+                <%= link_to("Show", reservation_path(reservation), :class => "action show") %>
+                <%= link_to("Edit", edit_reservation_path(reservation), :class => "action edit") %>
+                <%= link_to("Delete", delete_reservation_path(reservation), :class => "action delete") %>
+            </td>
+       </tr>
+        <% end %>
+    </table>
+    <br/>
+    <%= link_to("ADD NEW RESERVATION", new_reservation_path, :class => "action new")%>
+
+</div>

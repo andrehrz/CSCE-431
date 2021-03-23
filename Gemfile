@@ -34,11 +34,11 @@ gem 'devise'
 # Gem for style sheets
 # gem 'bootstrap', '~> 5.0.0.beta1'
 
+# Gem for calendar
+gem "simple_calendar", "~> 2.0"
+
 # Support for rspec
 gem 'rexml'
-
-# Gem for code style checking
-gem 'rubocop-rails', require: false
 
 # Gem for test coverage stats
 gem 'simplecov', :require => false, :group => :test
@@ -60,6 +60,12 @@ group :development, :test do
 
   # To make fake account fields
   gem 'ffaker'
+
+  # RuboCop
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec' 
 end
 
 group :development do

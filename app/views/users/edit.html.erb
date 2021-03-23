@@ -1,2 +1,45 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<div class="user edit">
+    <h2>Admin - Edit User Info</h2>
+
+    <%= form_for(@user, url: {action: "update"}) do |f| %>
+        <table summary = "Book from fields">
+            <tr>
+                <th><%= f.label :email %></th>
+                <td><%= f.text_field(:email) %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :first_name %></th>
+                <td><%= f.text_field(:first_name) %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :last_name %></th>
+                <td><%= f.text_field(:last_name) %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :phone_number %></th>
+                <td><%= f.text_field(:phone_number) %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :secondary_contact %></th>
+                <td><%= f.text_field(:secondary_contact) %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :is_admin %></th>
+                <td><%= f.select(:is_admin, options_for_select([['Yes', true], ['No', false]]), { include_blank: false })%></td>
+            </tr>
+        </table>
+
+        <div class="form-buttons">
+            <%= f.submit("Update User") %>
+        </div>
+
+    <% end %>
+</div>
+
+<%= link_to("<< Back to Home", users_path, :class => 'back-link')%>

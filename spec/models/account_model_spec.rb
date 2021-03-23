@@ -34,7 +34,7 @@ RSpec.describe Account, type: :model do
         end
 
         it 'should save successfully' do
-             account = Account.new(email: 'spamspamspam@gmail.com', password: 'admin', first_name: 'Bobby', last_name: 'Johnson', phone_number: '5122638824', secondary_contact: 'bademail@gmail.com').save
+            account = Account.new(email: 'spamspamspam@gmail.com', password: 'admin', first_name: 'Bobby', last_name: 'Johnson', phone_number: '5122638824', secondary_contact: 'bademail@gmail.com').save
          end
     end
 
