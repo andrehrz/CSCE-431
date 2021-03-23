@@ -5,6 +5,9 @@ class ReservationsController < ApplicationController
   def index
     # Create a new reservation for the date
     @reservation = Reservation.new
+
+    # Display Reservations That Are Mine
+    @reservations = Reservation.order('id DESC')
   end
 
   def show
@@ -18,7 +21,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to(equipments_path) # , notice:"#{@book.Title} Was Added !")
+      redirect_to(equipments_path)
     else
       render('new')
     end
@@ -31,7 +34,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
-      redirect_to(reservation_path(@reservation)) # , notice:"#{@book.Title} Was Updated !")
+      redirect_to(reservation_path(@reservation))
     else
       render('edit')
     end
@@ -51,9 +54,9 @@ class ReservationsController < ApplicationController
     # Use passed in date, check if there is no reservation for the same item on that day
     event_string = params[:reservation][:event_description]
     reserve_t = (params[:reservation][:checkout_date]).to_datetime
-    #reserve_t = reserve_t.new_offset("-0600")
+    # reserve_t = reserve_t.new_offset("-0600")
 
-    return_t = reserve_t + 1.days
+    return_t = reserve_t + 1.day
     @future_date = Reservation.new(event_description: event_string, checkout_date: reserve_t, checkin_date: return_t)
 
     # Display Equipment To Be Reserved
@@ -66,30 +69,26 @@ class ReservationsController < ApplicationController
   end
 
   def equip_log
-    @reservations = Reservation.order('checkout_date DESC');
+    @reservations = Reservation.order('checkout_date DESC')
     render('reservations/equip_log')
   end
 
   def future_reservations
-    @reservations = Reservation.order('checkout_date ASC');
+    @reservations = Reservation.order('checkout_date ASC')
   end
 
   def reserve_item
-    params.each do |key,value|
-       Rails.logger.warn "Param #{key}: #{value}"
-    end
+    # params.each do |key,value|
+    #    Rails.logger.warn "Param #{key}: #{value}"
+    # end
 
     # Use passed in date, check if there is no reservation for the same item on that day
     @event_string = params[:event]
-    @future_date = (params[:cd]).to_datetime
-    @return_date = @future_date + 1.days
+    @future_date = params[:cd].to_datetime
+    @return_date = @future_date + 1.day
 
-    puts @future_date
-    puts @return_date
-    puts @event_string
-
-    #@future_date = DateTime.now + 1 # Either as post params or Reservation hashes
-    #@return_date = @future_date + 1 # Either as post params or  Reservation hashes
+    # @future_date = DateTime.now + 1 # Either as post params or Reservation hashes
+    # @return_date = @future_date + 1 # Either as post params or  Reservation hashes
 
     # ID of desired item
     @equipment = Equipment.find(params[:id])
@@ -107,13 +106,15 @@ class ReservationsController < ApplicationController
     if invalid_reservation == false
       @acc_id = current_account.id # Find current account and the wanted item
       @reservation = Reservation.new(account_id: @acc_id, future_equip_id: @equipment.id, checkout_date: @future_date,
-                                      checkin_date: @return_date, event_description: @event_string)
+                                     checkin_date: @return_date, event_description: @event_string)
       @reservation.future_equip_id = @equipment.id
 
       if @reservation.save # Protect
-        redirect_to(reservations_future_reservations_path) # Possibly change to do a show action
-      else 
-        redirect_to(root_path)
+        redirect_to(reservations_path) # Possibly change to do a show action
+        flash[:alert] = 'Notice: Reservation Complete!'
+      else
+        redirect_to(reservations_path)
+        flash[:alert] = 'Notice: Error making reservation!'
       end
     else
       redirect_to(reservations_path)
@@ -135,7 +136,7 @@ class ReservationsController < ApplicationController
       @reservation.save
       # Delete the reservation (possibly).
       # Re-render
-      redirect_to(reservations_future_reservations_path) # Possibly change to do a show action
+      redirect_to(reservations_path) # Possibly change to do a show action
     end
   end
 
@@ -143,8 +144,6 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:event_description, :checkout_date, :checkin_date)
   end
 end
-
-
 
 # def check_invalid? (equipment, reslist)
 #   avail = true

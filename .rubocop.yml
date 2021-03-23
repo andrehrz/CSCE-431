@@ -24,12 +24,18 @@ AllCops:
     - 'Rakefile'
 
 Layout/LineLength:
-  Max: 150
+  Max: 200
 
 Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/AbcSize:
+  Max: 50
 
 Style/Documentation:
   Enabled: false
@@ -46,3 +52,16 @@ Naming/ClassAndModuleCamelCase:
 Naming/MethodName:
   Enabled: true
   EnforcedStyle: snake_case #default
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+

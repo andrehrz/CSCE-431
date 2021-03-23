@@ -1,0 +1,27 @@
+env:
+  RUBY_VERSION: 3.0.0
+  DATABASE_URL: postgres://postgres:@localhost:5432/CSCE-431_development
+  POSTGRES_USER: chrisplmmr
+  POSTGRES_PASSWORD: "cpadmin"
+  POSTGRES_DB: postgres
+
+name: CI/CD
+on: [push,pull_request]
+
+jobs:
+  rubocop-test:
+    name: Rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install Rubocop
+        run: | 
+          gem install rubocop
+          gem install rubocop-performance
+          gem install rubocop-rails
+          gem install rubocop-rspec
+      - name: Check code
+        run: rubocop

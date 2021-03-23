@@ -82,7 +82,7 @@ class EquipmentsController < ApplicationController
 
       # Update Item Info For Equipment Log
       @reservation.update(saved_item: @equipment.name)
-      @reservation.update(renter_name: current_account.first_name + " " + current_account.last_name)
+      @reservation.update(renter_name: current_account.first_name + ' ' + current_account.last_name)
 
       # Update its availability
       @equipment.update(available: false)
@@ -108,5 +108,4 @@ class EquipmentsController < ApplicationController
   def equipment_params
     params.require(:equipment).permit(:name, :description, :available)
   end
-  
 end
