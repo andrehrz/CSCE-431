@@ -7,8 +7,6 @@
 
   <%= form_for(@reservation, :url => reservations_path, :method => 'post') do |f| %>
 
-
-
     <%= render(:partial => 'form', :locals => {:f => f}) %>
 
     <div class="form-buttons">
