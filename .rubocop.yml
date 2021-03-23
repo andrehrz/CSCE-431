@@ -1,165 +1,67 @@
-# This is the configuration used to check the rubocop source code.
-
-# inherit_from: .rubocop_todo.yml
-require:
-  - rubocop/cop/internal_affairs
+require: 
+  - rubocop-performance
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
-  NewCops: enable
   Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
+    - 'app/channels/**'
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'script/**/*' 
+    - 'bin/{rails,rake}'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'node_modules/**/*'
     - 'tmp/**/*'
+    - 'vendor/**/*'
     - '.git/**/*'
-    - 'bin/*'
-    - 'config/**'
-    - 'app/assets/*'
-    - 'app/channels/*'
-    - 'app/controllers/concerns/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/*'
-    - 'app/javascript/*'
-    - 'app/jobs/*'
-    - 'app/mailers/*'
-    - 'app/models/concerns/*'
-    - 'db/*'
-    - 'lib/*'
-    - 'log/*'
-    - 'node_modules/*'
-    - 'storage/*'
-    - 'test/**'
-    - 'tmp/*'
-    - '.browserslistrc'
-    - '.gitignore'
-    - '.rspec'
-    - 'babel.config.js'
+    - 'spec/**/*'
+    - 'test/**/*'
     - 'config.ru'
     - 'Gemfile'
-    - 'Gemfile.lock'
-    - 'package.json'
-    - 'postcss.config.js'
     - 'Rakefile'
-    - 'README.md'
-    - 'yarn.lock'
-  TargetRubyVersion: 3.0
-  SuggestExtensions: false
-
-Naming/PredicateName:
-  # Method define macros for dynamically generated method.
-  MethodDefinitionMacros:
-    - define_method
-    - define_singleton_method
-    - def_node_matcher
-    - def_node_search
-
-Style/AccessorGrouping:
-  Exclude:
-    - lib/rubocop/formatter/base_formatter.rb
-    - lib/rubocop/cop/offense.rb
-
-Style/FormatStringToken:
-  # Because we parse a lot of source codes from strings. Percent arrays
-  # look like unannotated format string tokens to this cop.
-  Exclude:
-    - spec/**/*
-
-Style/IpAddresses:
-  # The test for this cop includes strings that would cause offenses
-  Exclude:
-  - spec/rubocop/cop/style/ip_addresses_spec.rb
-
-Layout/EndOfLine:
-  EnforcedStyle: lf
-
-Layout/ClassStructure:
-  Enabled: true
-  Categories:
-    module_inclusion:
-      - include
-      - prepend
-      - extend
-  ExpectedOrder:
-      - module_inclusion
-      - constants
-      - public_class_methods
-      - initializer
-      - instance_methods
-      - protected_methods
-      - private_methods
-
-Layout/TrailingWhitespace:
-  AllowInHeredoc: false
-
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - 'spec/**/*.rb'
-
-Layout/HashAlignment:
-  EnforcedHashRocketStyle:
-    - key
-    - table
-  EnforcedColonStyle:
-    - key
-    - table
 
 Layout/LineLength:
-  Max: 100
-  IgnoredPatterns:
-    - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
-
-Lint/InterpolationCheck:
-  Exclude:
-    - 'spec/**/*.rb'
-
-Lint/UselessAccessModifier:
-  MethodCreatingMethods:
-    - 'def_matcher'
-    - 'def_node_matcher'
-
-Lint/BooleanSymbol:
-  Enabled: false
+  Max: 200
 
 Metrics/BlockLength:
   Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'
-    - '**/*.gemspec'
+    - config/**/*
+    - spec/**/*
 
-Metrics/ClassLength:
-  Exclude:
-    - lib/rubocop/config_obsoletion.rb
+Metrics/MethodLength:
+  Max: 40
 
-Metrics/ModuleLength:
-  Exclude:
-    - 'spec/**/*.rb'
+Metrics/AbcSize:
+  Max: 50
 
-# RSpec/FilePath:
-#   Exclude:
-#     - spec/rubocop/cop/internal_affairs/redundant_let_rubocop_config_new_spec.rb
-#     - spec/rubocop/formatter/junit_formatter_spec.rb
+Style/Documentation:
+  Enabled: false
 
-# RSpec/PredicateMatcher:
-#   EnforcedStyle: explicit
+Style/FrozenStringLiteralComment:
+  Enabled: false
+   
+Layout/IndentationWidth:
+  Width: 2
 
-# RSpec/MessageSpies:
-#   EnforcedStyle: receive
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+ 
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case #default
 
-# RSpec/NestedGroups:
-#   Max: 7
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
 
-# RSpec/MultipleMemoizedHelpers:
-#   Enabled: false
+Style/IdenticalConditionalBranches:
+  Enabled: false
 
-# Performance/CollectionLiteralInLoop:
-#   Exclude:
-#     - 'Rakefile'
-#     - 'spec/**/*.rb'
+Style/StringConcatenation:
+  Enabled: false
 
-# RSpec/StubbedMock:
-#   Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 
-InternalAffairs/ExampleDescription:
-  Include:
-    - 'spec/rubocop/cop/**/*.rb'

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  #get 'equipments/index'
-  #get 'equipments/show'
-  #get 'equipments/new'
-  #get 'equipments/edit'
-  #get 'equipments/delete'
-  #get 'equipments/equip_list'
+  # get 'equipments/index'
+  # get 'equipments/show'
+  # get 'equipments/new'
+  # get 'equipments/edit'
+  # get 'equipments/delete'
+  # get 'equipments/equip_list'
   # get 'reservations/index'
   # get 'reservations/show'
   # get 'reservations/new'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   devise_for :accounts
   
-  # EQUIPMENT ROUTES (Non ID routes cannot go into rescource)
+  # EQUIPMENT ROUTES (Non ID routes cannot go into rescources)
   get 'equipments/index'
   get 'equipments/equip_list'
   resources :equipments do
@@ -34,13 +34,18 @@ Rails.application.routes.draw do
   end
  
   # RESERVATION ROUTES
+  # get 'reservations/select_date'
+  post 'reservations/equip_reserve'
+  get 'reservations/equip_log'
+  get 'reservations/future_reservations'
+  get 'reservations/reserve_item'
   resources :reservations do
     member do
       get :delete
+      get :cancel_item
     end
   end
 
-  # Unused should delete later
   resources :users do
     member do
       get :delete

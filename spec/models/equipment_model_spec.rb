@@ -37,7 +37,7 @@ RSpec.describe Equipment, type: :model do
         end
 
         it 'should return non avail equipment' do
-            expect(Equipment.not_avail_items.size).to eq(0)
+            expect(Equipment.not_avail_items.size).to eq(3)
         end
     end
 end

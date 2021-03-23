@@ -1,0 +1,19 @@
+<h1>Equipment Reservations</h1>
+
+<div class="reservations index">
+    <h3> Select a Date for Reservation </h3>
+    <div class="reservation dates">
+        <%= form_for(@selected_date, :url => reservations_equip_reserve_path, :method => 'post') do |f| %>
+            <table summary="date dropdown">
+                <tr>
+                    <th><%= f.label "Reserve Date" %></th>
+                    <td><%= f.date_field(:date, value: @start_date, min: 0.days.ago, max: 1.year.from_now)%></td>
+                </tr>
+            </table>
+            <div class="form-buttons">
+                <%= f.submit("Pick Date") %>
+            </div>
+        <% end %>
+    </div>
+    <br/>
+</div>

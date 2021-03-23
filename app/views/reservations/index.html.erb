@@ -1,41 +1,61 @@
-<h1>Reservations#index</h1>
+<h1>Equipment Reservations</h1>
 
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
 
 <div class="reservations index">
+    <h3> Select a Date for Reservation </h3>
+    <div class="reservation dates">
+        <%= form_for(@reservation, :url => reservations_equip_reserve_path, :method => 'post') do |f| %>
+            <table summary="date dropdown">
+                <tr>
+                    <th><%= f.label "Reserve Date" %></th>
+                    <td><%= f.date_field(:checkout_date, min: 8.days.from_now, max: 1.year.from_now)%></td>
+                </tr>
+                <tr>
+                    <th>Event Description</th>
+                    <td><%= f.text_field(:event_description) %></td>
+                </tr>
+            </table>
+            <div class="form-buttons">
+                <%= f.submit("Pick Date") %>
+            </div>
+        <% end %>
+    </div>
+    <br/>
+</div>
+<br/>
 
-    <h2> Reservation </h2>
-
-    <% flash.each do |type, msg| %>
-        <div style="color:red;">
-        <%= msg %>
-        </div>
-    <% end %>
-
-    <br />
-
-    <table class="listing" summary="Reservation List">
+<h4>My Future Reservations</h4>
+<div class="my equipments">
+    <table class="listing" summary="Equipment List">
         <tr class="header">
-            <th> ID </th>
-            <th> Event Description </th>
-            <th> Checkout Date </th>
-            <th> Checkin Date </th>
-            <th> Actions </th>
+            <th style="padding:0 15px;"> ID </th>
+            <th style="padding:0 15px;"> Name </th>
+            <th style="padding:0 15px;"> Description </th>
+            <th style="padding:0 15px;"> Reserved Date </th>
+            <th style="padding:0 15px;"> Return By Date </th>
+            <th style="padding:0 15px;"> Actions </th>
         </tr>
-        <% @reservations.each do |reservation| %>
+        <% current_account.reservations.each do |reservation| %>
+        <% if reservation.future_equip_id != nil %>
+        <% @future_item = Equipment.find(reservation.future_equip_id) %>
         <tr>
-            <td><%= reservation.id%></td>
-            <td><%= reservation.event_description%></td>
-            <td><%= reservation.checkout_date%></td>
-            <td><%= reservation.checkin_date %> </td>
-            <td class="actions">
-                <%= link_to("Show", reservation_path(reservation), :class => "action show") %>
-                <%= link_to("Edit", edit_reservation_path(reservation), :class => "action edit") %>
-                <%= link_to("Delete", delete_reservation_path(reservation), :class => "action delete") %>
+            <td style="padding:0 15px;"><%= @future_item.id%></td>
+            <td style="padding:0 15px;"><%= @future_item.name%></td>
+            <td style="padding:0 15px;"><%= @future_item.description%></td>
+            <td style="padding:0 15px;"><%= reservation.checkout_date %></td>
+            <td style="padding:0 15px;"><%= reservation.checkin_date %></td>
+            <td style="padding:0 15px;"class="actions">
+                <%= link_to("Cancel", cancel_item_reservation_path(reservation), :class => "action cancel_item") %>
             </td>
         </tr>
         <% end %>
+        <% end %>
     </table>
-    <br/>
-    <%= link_to("ADD NEW RESERVATION", new_reservation_path, :class => "action new")%>
-
 </div>
