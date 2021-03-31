@@ -1,15 +1,15 @@
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
+
+
 <h1>Admin Equipment Management</h1>
-<%= link_to("<< Back To Equipment", edit_account_registration_path, :class => 'action equip_list')%>
+<br/>
+
 
 <div class="equipments index">
-
-   <!--<h2> Equipment </h2>-->
-    <% flash.each do |type, msg| %>
-        <div style="color:red;">
-        <%= msg %>
-        </div>
-    <% end %>
-    <br />
 
     <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
     <table class="listing" summary="Equipment List">
@@ -35,3 +35,6 @@
         <% end %>
     </table>
 </div>
+<br/>
+
+<%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>

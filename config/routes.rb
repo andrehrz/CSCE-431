@@ -36,13 +36,15 @@ Rails.application.routes.draw do
   # RESERVATION ROUTES
   # get 'reservations/select_date'
   post 'reservations/equip_reserve'
-  get 'reservations/equip_log'
+  get 'reservations/reservation_log'
   get 'reservations/future_reservations'
   get 'reservations/reserve_item'
+  get 'reservations/reservation_list'
   resources :reservations do
     member do
       get :delete
       get :cancel_item
+      get :admin_cancel_item
     end
   end
 

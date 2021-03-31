@@ -68,9 +68,13 @@ class ReservationsController < ApplicationController
     render('reservations/equip_reserve')
   end
 
-  def equip_log
-    @reservations = Reservation.order('checkout_date DESC')
-    render('reservations/equip_log')
+  def reservation_log
+    if current_account.is_admin
+      @reservations = Reservation.order('checkout_date DESC')
+      render('reservations/equip_log')
+    else
+      redirect_to(edit_account_registration_path)
+    end
   end
 
   def future_reservations
@@ -109,6 +113,10 @@ class ReservationsController < ApplicationController
                                      checkin_date: @return_date, event_description: @event_string)
       @reservation.future_equip_id = @equipment.id
 
+      # Update Item Info For Equipment Log
+      @reservation.saved_item = @equipment.name
+      @reservation.renter_name  = current_account.first_name + ' ' + current_account.last_name
+
       if @reservation.save # Protect
         redirect_to(reservations_path) # Possibly change to do a show action
         flash[:alert] = 'Notice: Reservation Complete!'
@@ -122,22 +130,43 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def reservation_list
+      # Get Reservation List
+      @reservations = Reservation.order('id ASC')
+  end
+
   def cancel_item
-    if !account_signed_in?
-      redirect_to(new_account_session_path)
-    else
-      # Undo a future reservation.
-      # Get reservation by its passed in id.
-      @reservation = Reservation.find(params[:id])
-      # Set the reservation future equip id to nil.
-      @reservation.future_equip_id = nil
-      # @reservation.account_id = nil
-      # Protect
-      @reservation.save
-      # Delete the reservation (possibly).
-      # Re-render
-      redirect_to(reservations_path) # Possibly change to do a show action
-    end
+    # Get reservation by its passed in id.
+    @reservation = Reservation.find(params[:id])
+
+    # Set the reservation future equip id to nil.
+    @reservation.future_equip_id = nil
+
+    # @reservation.account_id = nil
+    
+    # Protect
+    @reservation.save
+    
+    # Delete the reservation (possibly).
+    # Re-render
+    redirect_to(reservations_path) # Possibly change to do a show action
+  end
+
+  def admin_cancel_item
+    # Get reservation by its passed in id.
+    @reservation = Reservation.find(params[:id])
+
+    # Set the reservation future equip id to nil.
+    @reservation.future_equip_id = nil
+
+    # @reservation.account_id = nil
+    
+    # Protect
+    @reservation.save
+    
+    # Delete the reservation (possibly).
+    # Re-render
+    redirect_to(reservations_reservation_list_path) # Possibly change to do a show action
   end
 
   def reservation_params

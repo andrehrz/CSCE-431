@@ -1,7 +1,19 @@
 class EquipmentsController < ApplicationController
-  before_action :authenticate_account!
-
+    
   require 'date'
+
+  # Account Authorization
+  def auth_admin
+    if !current_account.is_admin
+      redirect_to(root_path)
+    end
+  end
+
+  # Run auth befor all actions
+  before_action :authenticate_account!
+  before_action :auth_admin, only: [:index, :show, :new, :create, :edit, :update, :delete, :destroy]
+
+  ##################################################################################################
 
   # Only Accessible By Admin
   def index
@@ -33,6 +45,7 @@ class EquipmentsController < ApplicationController
     @equipment = Equipment.find(params[:id])
   end
 
+  # Only Accessible By Admin
   def update
     @equipment = Equipment.find(params[:id])
     if @equipment.update(equipment_params)
@@ -51,7 +64,7 @@ class EquipmentsController < ApplicationController
   def destroy
     @equipment = Equipment.find(params[:id])
     @equipment.destroy
-    redirect_to(equipments_path) # , notice:"#{@book.Title} Was Deleted !")
+    redirect_to(equipments_path)
   end
 
   def equip_list
@@ -61,33 +74,29 @@ class EquipmentsController < ApplicationController
 
   # Make Secure For Error Catching
   def check_out
-    if !account_signed_in?
-      redirect_to(new_account_session_path)
-    else
-      # Find current account and the wanted item
-      @acc_id = current_account.id
-      @current_time = DateTime.now
-      @return_time = @current_time + 7
+    # Find current account and the wanted item
+    @acc_id = current_account.id
+    @current_time = DateTime.now
+    @return_time = @current_time + 7
 
-      # Make a new reservation, set owner as the current user
-      @reservation = Reservation.new(account_id: @acc_id, checkout_date: @current_time, checkin_date: @return_time)
-      @reservation.save
+    # Make a new reservation, set owner as the current user
+    @reservation = Reservation.new(account_id: @acc_id, checkout_date: @current_time, checkin_date: @return_time)
+    @reservation.save
 
-      # Set equipment FK to the just made reservation
-      @equipment = Equipment.find(params[:id])
-      @equipment.reservation = @reservation
+    # Set equipment FK to the just made reservation
+    @equipment = Equipment.find(params[:id])
+    @equipment.reservation = @reservation
 
-      # Protect
-      @equipment.save
+    # Protect
+    @equipment.save
 
-      # Update Item Info For Equipment Log
-      @reservation.update(saved_item: @equipment.name)
-      @reservation.update(renter_name: current_account.first_name + ' ' + current_account.last_name)
+    # Update Item Info For Equipment Log
+    @reservation.update(saved_item: @equipment.name)
+    @reservation.update(renter_name: current_account.first_name + ' ' + current_account.last_name)
 
-      # Update its availability
-      @equipment.update(available: false)
-      redirect_to(show_for_members_equipment_path(@equipment))
-    end
+    # Update its availability
+    @equipment.update(available: false)
+    redirect_to(show_for_members_equipment_path(@equipment))
   end
 
   # Make Secure For Error Catching

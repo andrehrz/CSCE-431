@@ -1,9 +1,14 @@
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
 
-<!-- Going to have admin problems here. Probably make two views, one for admin and one not for admin -->
-<%= link_to("<< Back to Equipment", equipments_path, :class => 'back-link') %>
+
+<h2>Admin | Equipment Item Info</h2>
+
 
 <div class="equipments show">
-  <h2>Equipment Item Info</h2>
 
   <table summary="equipment detail view">
     <tr>
@@ -24,5 +29,7 @@
     </tr>
     
   </table>
-
 </div>
+<br/>
+
+<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>

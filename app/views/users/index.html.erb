@@ -1,11 +1,14 @@
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
+<br/>
 
-<div class = "books index">
-    <h2>Admin - All Users List</h2>
+<h1>Admin User Management</h1>
+<br/>
+
+<div class = "accounts index">
     <table class="listing" summary="Book Listings">
         <tr class="header">
             <th style="padding:0 15px;">ID</th>
@@ -30,3 +33,5 @@
     </table>
 </div>
 <br/>
+
+<%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>

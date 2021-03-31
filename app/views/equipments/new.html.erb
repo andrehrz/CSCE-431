@@ -1,9 +1,9 @@
-<h1>Equipments#new</h1>
+<h1>Equipment Create</h1>
 
-<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
 
 <div class="equipments new">
-  <h2>Create Equipment</h2>
+  <h3>Create an Equipment Item</h3>
 
   <%= form_for(@equipment, :url => equipments_path, :method => 'post') do |f| %>
 
