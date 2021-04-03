@@ -1,13 +1,18 @@
-<h1>Equipments#delete</h1>
-<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
+
+<h2>Admin | Delete Equipment Item</h2>
+
 
 <div class="equipments delete">
-  <h2>Delete equipment</h2>
 
   <%= form_for(@equipment, :method => 'delete') do |f| %>
 
     
-    <p>Are You Sure</p>
+    <p>Are you sure you want to delete: <%= @equipment.name %></p>
 
     <div class="form-buttons">
       <%= f.submit("Delete equipment") %>
@@ -15,3 +20,6 @@
 
   <% end %>
 </div>
+<br/>
+
+<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>

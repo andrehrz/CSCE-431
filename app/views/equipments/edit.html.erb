@@ -1,7 +1,12 @@
-<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
+
+<h2>Admin | Edit Equipment Item</h2>
 
 <div class="equipments edit">
-  <h2>Edit Equipment</h2>
 
   <%= form_for(@equipment) do |f| %>
     
@@ -13,4 +18,7 @@
 
   <% end %>
 </div>
+<br/>
+
+<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
 

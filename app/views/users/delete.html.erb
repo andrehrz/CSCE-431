@@ -1,14 +1,13 @@
-<%= link_to("<< Back to List", users_path, :class => "back-link")%>
-
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
 
-<div>
-    <h2>Delete Selected User</h2>
+<h2>Admin | Delete Selected User</h2>
+<br/>
 
+<div>
     <%= form_for(@user, url: {action: "destroy"}, :method => 'delete') do |f| %>
         <p>Are you sure you want to delete this user?</p>
         <table summary="account info view">
@@ -30,3 +29,6 @@
         </div>
     <% end %>
 </div>
+<br/>
+
+<%= link_to("<< Back to Users List", users_path, :class => "back-link")%>

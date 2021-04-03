@@ -108,13 +108,16 @@
   <h2>Admin Actions</h2>
     <table summary="Admin Actions">
           <tr>
-              <th class = button><%= link_to "Reservation Log", action: "equip_log", controller: "/reservations" %></th>
+              <th class = button><%= link_to "Reservation Log", action: "reservation_log", controller: "/reservations" %></th>
           </tr>
           <tr>
               <th class = button><%= link_to "Manage Accounts", action: "index", controller: "/users"%></th>
           </tr>
           <tr>
               <th class = button><%= link_to "Manage Equipment", action: "index", controller: "/equipments" %></th>
+          </tr>
+          <tr>
+              <th class = button><%= link_to "Manage Reservations", action: "reservation_list", controller: "/reservations" %></th>
           </tr>
       </table>
     </div>

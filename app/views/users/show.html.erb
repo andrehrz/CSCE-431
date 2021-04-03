@@ -1,13 +1,13 @@
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
 
-<%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>
+<h2>Admin | Showing User Info</h2>
+<br/>
 
 <div class="users show">
-    <h2>Admin - Showing User Info</h2>
       
     <table summary="account info view">
         <tr>
@@ -48,3 +48,6 @@
         </tr>
     </table>
 </div>
+<br/>
+
+<%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>

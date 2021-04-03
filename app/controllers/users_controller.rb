@@ -1,12 +1,24 @@
 class UsersController < ApplicationController
-  before_action :authenticate_account!
 
-  # Find all books for template
+  # Account Authorization
+  def auth_admin
+    if !current_account.is_admin
+      redirect_to(root_path)
+    end
+  end
+
+  # Run auth befor all actions
+  before_action :authenticate_account!
+  before_action :auth_admin
+
+  ####################################
+
+  # Only for admins
   def index
     @users = Account.order('id ASC')
   end
 
-  # Find book for template
+  # Only for admins
   def show
     @user = Account.find(params[:id])
   end
@@ -17,12 +29,12 @@ class UsersController < ApplicationController
   # Should stay empty
   def create; end
 
-  # Edit an existing user as admin
+  # Only for admins
   def edit
     @user = Account.find(params[:id])
   end
 
-  # Update an existing user as admin
+  # Only for admins
   def update
     @user = Account.find(params[:id])
     if @user.update(user_params)
@@ -34,12 +46,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # Delete an account as admin
+  # Only for admins
   def delete
     @user = Account.find(params[:id])
   end
 
-  # Destroy an account as admin
+  # Only for admins
   def destroy
     @user = Account.find(params[:id])
     @user.destroy
@@ -48,7 +60,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
     params.require(:account).permit(:email, :first_name, :last_name, :phone_number, :secondary_contact, :is_admin)
   end

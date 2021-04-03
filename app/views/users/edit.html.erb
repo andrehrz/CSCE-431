@@ -1,11 +1,13 @@
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
 
+<h2>Admin | Edit User Info</h2>
+<br/>
+
 <div class="user edit">
-    <h2>Admin - Edit User Info</h2>
 
     <%= form_for(@user, url: {action: "update"}) do |f| %>
         <table summary = "Book from fields">
@@ -31,7 +33,7 @@
             </tr>
             <tr>
                 <th><%= f.label :is_admin %></th>
-                <td><%= f.select(:is_admin, options_for_select([['Yes', true], ['No', false]]), { include_blank: false })%></td>
+                <td><%= f.select(:is_admin, options_for_select([['No', false], ['Yes', true]]), { include_blank: false })%></td>
             </tr>
         </table>
 
@@ -41,5 +43,6 @@
 
     <% end %>
 </div>
+<br/>
 
-<%= link_to("<< Back to Home", users_path, :class => 'back-link')%>
+<%= link_to("<< Back to Users List", users_path, :class => 'back-link')%>
