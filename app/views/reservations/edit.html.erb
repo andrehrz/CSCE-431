@@ -2,8 +2,21 @@
 
 <%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
 <div class="reservations edit">
-  <h2>Edit Reservation</h2>
+  <h2 style = "text-align: center;">Edit Reservation</h2>
 
   <%= form_for(@reservation) do |f| %>
 

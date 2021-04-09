@@ -1,15 +1,28 @@
-<h1>Reservations#delete</h1>
+<h1 style = "text-align: center;">Reservations#delete</h1>
 <%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
 <div class="reservations delete">
-  <h2>Delete reservation</h2>
+  <h2 style = "text-align: center;">Delete reservation</h2>
 
   <%= form_for(@reservation, :method => 'delete') do |f| %>
 
 
-    <p>Are You Sure</p>
+    <p style = "text-align: center;">Are You Sure</p>
 
-    <div class="form-buttons">
+    <div class="form-buttons" style="text-align: center;">
       <%= f.submit("Delete reservation") %>
     </div>
 

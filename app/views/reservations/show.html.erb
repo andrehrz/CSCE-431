@@ -1,11 +1,24 @@
-<h1>Reservations#show</h1>
+<h1 style = "text-align:center;">Reservations#show</h1>
 
 <%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
 
-<div class="reservations show">
-  <h2>Show Reservation</h2>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
-  <table summary="reservation detail view">
+<div class="reservations show">
+  <h2 style = "text-align: center;">Show Reservation</h2>
+
+  <table class="center" summary="reservation detail view">
     <tr>
       <th>ID</th>
       <td><%= @reservation.id %></td>

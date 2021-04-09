@@ -1,8 +1,16 @@
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+
+</style>
 <div class = "row">
 
   <div class = "column">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
-    <div class="account show" style = "margin-left: 1%;">
+    <h2 style = "padding-left: 600px;"> Edit <%= resource_name.to_s.humanize %></h2>
+    <div class="account show">
       <table summary="Account detail view">
           <tr>
               <th>First Name: </th>
@@ -28,7 +36,7 @@
     </div>
     <br/>
 
-    <div class="edit-form" style="margin-left: 1%;">
+    <div class="edit-form">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 

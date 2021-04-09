@@ -1,9 +1,23 @@
-<h1>Reservations#new</h1>
 
 <%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+  margin-left:auto;
+  margin-right:auto;
+}
+div.reservations{
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
 <div class="reservations new">
-  <h2>Create Reservation</h2>
+  <h2 style = "text-align: center">Create Reservation</h2>
 
   <%= form_for(@reservation, :url => reservations_path, :method => 'post') do |f| %>
 

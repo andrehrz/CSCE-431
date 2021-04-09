@@ -1,4 +1,4 @@
-<h1>Equipment Reservations</h1>
+<h1 style = "text-align: center;">Equipment Reservations</h1>
 
 <% flash.each do |type, msg| %>
   <div>
@@ -6,11 +6,24 @@
   </div>
 <% end %>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
 <div class="reservations index">
-    <h3> Select a Date for Reservation </h3>
+    <h3 style = "text-align: center;"> Select a Date for Reservation </h3>
     <div class="reservation dates">
         <%= form_for(@reservation, :url => reservations_equip_reserve_path, :method => 'post') do |f| %>
-            <table summary="date dropdown">
+            <table class="center" summary="date dropdown">
                 <tr>
                     <th><%= f.label "Reserve Date" %></th>
                     <td><%= f.date_field(:checkout_date, min: 8.days.from_now, max: 1.year.from_now)%></td>
@@ -20,7 +33,7 @@
                     <td><%= f.text_field(:event_description) %></td>
                 </tr>
             </table>
-            <div class="form-buttons">
+            <div class="form-buttons" style = "text-align: center;">
                 <%= f.submit("Pick Date") %>
             </div>
         <% end %>
@@ -29,9 +42,9 @@
 </div>
 <br/>
 
-<h4>My Future Reservations</h4>
-<div class="my equipments">
-    <table class="listing" summary="Equipment List">
+<h4 style = "text-align: center;">My Future Reservations</h4>
+<div class="table">
+    <table class="center" summary="Equipment List">
         <tr class="header">
             <th style="padding:0 15px;"> ID </th>
             <th style="padding:0 15px;"> Name </th>
