@@ -77,7 +77,7 @@
         <br/>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation %><br/>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
         <br/>
@@ -99,7 +99,6 @@
     <h3>Cancel my account</h3>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
-
     <%= link_to("<< Back To Home", root_path, :class => 'back-link') %>
   </div>
 

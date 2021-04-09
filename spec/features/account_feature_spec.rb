@@ -38,7 +38,7 @@ RSpec.describe "Account Log In", type: :feature do
     end
 end
 
-# Show integration test
+# Show validation / integration test
 RSpec.describe "Account Shows Info", type: :feature do
     scenario "valid info" do
         visit new_account_session_path

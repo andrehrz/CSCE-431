@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
-
   # Account Authorization
   def auth_admin
-    if !current_account.is_admin
-      redirect_to(root_path)
-    end
+    redirect_to(root_path) unless current_account.is_admin
   end
 
   # Run auth befor all actions
@@ -60,6 +57,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:account).permit(:email, :first_name, :last_name, :phone_number, :secondary_contact, :is_admin)
   end

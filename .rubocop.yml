@@ -31,6 +31,9 @@ Metrics/BlockLength:
     - config/**/*
     - spec/**/*
 
+Metrics/ClassLength:
+  Max: 110
+
 Metrics/MethodLength:
   Max: 40
 

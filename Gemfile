@@ -31,8 +31,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Accounts Gem
 gem 'devise'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 # Gem for style sheets
-# gem 'bootstrap', '~> 5.0.0.beta1'
+# gem 'bootstrap', '~> 5.0.0.beta2'
 
 # Gem for calendar
 gem "simple_calendar", "~> 2.0"

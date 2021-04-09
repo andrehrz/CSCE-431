@@ -115,7 +115,7 @@ class ReservationsController < ApplicationController
 
       # Update Item Info For Equipment Log
       @reservation.saved_item = @equipment.name
-      @reservation.renter_name  = current_account.first_name + ' ' + current_account.last_name
+      @reservation.renter_name = current_account.first_name + ' ' + current_account.last_name
 
       if @reservation.save # Protect
         redirect_to(reservations_path) # Possibly change to do a show action
@@ -131,8 +131,8 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_list
-      # Get Reservation List
-      @reservations = Reservation.order('id ASC')
+    # Get Reservation List
+    @reservations = Reservation.order('id ASC')
   end
 
   def cancel_item
@@ -143,10 +143,10 @@ class ReservationsController < ApplicationController
     @reservation.future_equip_id = nil
 
     # @reservation.account_id = nil
-    
+
     # Protect
     @reservation.save
-    
+
     # Delete the reservation (possibly).
     # Re-render
     redirect_to(reservations_path) # Possibly change to do a show action
@@ -160,10 +160,10 @@ class ReservationsController < ApplicationController
     @reservation.future_equip_id = nil
 
     # @reservation.account_id = nil
-    
+
     # Protect
     @reservation.save
-    
+
     # Delete the reservation (possibly).
     # Re-render
     redirect_to(reservations_reservation_list_path) # Possibly change to do a show action
