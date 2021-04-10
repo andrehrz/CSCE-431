@@ -4,13 +4,27 @@
     </div>
 <% end %>
 
-<h1>Admin Equipment Management</h1>
+<h1 style = "text-align: center;">Admin Equipment Management</h1>
 <br/>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
 <div class="equipments index">
 
-    <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
+    <div style = "text-align: center;">
+        <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
+    </div>
     <table class="listing" summary="Equipment List">
         <tr class="header">
             <th style="padding:0 15px;"> ID </th>
@@ -36,4 +50,6 @@
 </div>
 <br/>
 
-<%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>
+<div style = "text-align: center;">
+    <%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>
+</div>

@@ -5,7 +5,20 @@
 <% end %>
 <br/>
 
-<h1>Admin User Management</h1>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
+<h1 style = "text-align: center;">Admin User Management</h1>
 <br/>
 
 <div class = "accounts index">
@@ -34,4 +47,6 @@
 </div>
 <br/>
 
+<div style = "text-align: center">
 <%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>
+</div>

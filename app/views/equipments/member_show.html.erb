@@ -1,11 +1,26 @@
 
 <!-- Going to have admin problems here. Probably make two views, one for admin and one not for admin -->
-<%= link_to("<< Back to Equipment", equipments_equip_list_path, :class => 'back-link') %>
+<div style="text-align: center;">
+    <%= link_to("<< Back to Equipment", equipments_equip_list_path, :class => 'back-link') %>
+</div>
+
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
 <div class="equipments show">
-  <h2>Equipment Item Info</h2>
+  <h2 style = "text-align: center;">Equipment Item Info</h2>
 
-  <table summary="equipment detail view">
+  <table class = "center" summary="equipment detail view">
     <tr>
       <th>ID</th>
       <td><%= @equipment.id %></td>
@@ -22,7 +37,7 @@
       <th>Available</th>
       <td><%= @equipment.available %></td>
     </tr>
-    
+
   </table>
 
 </div>

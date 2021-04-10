@@ -1,15 +1,30 @@
-<h1>Equipment Create</h1>
+<h1 style = "text-align: center;">Equipment Create</h1>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
+<div style = "text-align: center;">
+    <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>
 
 <div class="equipments new">
-  <h3>Create an Equipment Item</h3>
+  <h3 style = "text-align: center;">Create an Equipment Item</h3>
 
   <%= form_for(@equipment, :url => equipments_path, :method => 'post') do |f| %>
 
     <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-    <div class="form-buttons">
+    <div class="form-buttons" style = "text-align:center;">
       <%= f.submit("Create Equipment") %>
     </div>
 

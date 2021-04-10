@@ -4,22 +4,36 @@
     </div>
 <% end %>
 
-<h2>Admin | Delete Equipment Item</h2>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
+<h2 style = "text-align: center;">Admin | Delete Equipment Item</h2>
 
 
 <div class="equipments delete">
 
   <%= form_for(@equipment, :method => 'delete') do |f| %>
 
-    
-    <p>Are you sure you want to delete: <%= @equipment.name %></p>
 
-    <div class="form-buttons">
+    <p style = "text-align: center;">Are you sure you want to delete: <%= @equipment.name %></p>
+
+    <div class="form-buttons" style="text-align: center">
       <%= f.submit("Delete equipment") %>
     </div>
 
   <% end %>
 </div>
 <br/>
-
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<div style = "text-align: center">
+    <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>

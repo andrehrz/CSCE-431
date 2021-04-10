@@ -4,12 +4,25 @@
     </div>
 <% end %>
 
-<h2>Admin | Edit Equipment Item</h2>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
-<div class="equipments edit">
+<h2 style = "text-align: center;">Admin | Edit Equipment Item</h2>
+
+<div class="equipments edit" style = "text-align:center;">
 
   <%= form_for(@equipment) do |f| %>
-    
+
     <%= render(:partial => 'form', :locals => {:f => f}) %>
 
     <div class="form-buttons">
@@ -20,5 +33,6 @@
 </div>
 <br/>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
-
+<div style = "text-align: center;">
+    <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>

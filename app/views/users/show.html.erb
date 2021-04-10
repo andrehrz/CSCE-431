@@ -4,12 +4,25 @@
     </div>
 <% end %>
 
-<h2>Admin | Showing User Info</h2>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
+<h2 style="text-align:center;">Admin | Showing User Info</h2>
 <br/>
 
 <div class="users show">
-      
-    <table summary="account info view">
+
+    <table class="center" summary="account info view">
         <tr>
             <th>ID</th>
             <td><%= @user.id %></td>
@@ -50,4 +63,6 @@
 </div>
 <br/>
 
+<div style = "text-align: center;">
 <%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>
+</div>

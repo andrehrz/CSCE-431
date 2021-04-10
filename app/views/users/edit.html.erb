@@ -4,13 +4,26 @@
     </div>
 <% end %>
 
-<h2>Admin | Edit User Info</h2>
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
+
+<h2 style = "text-align: center;">Admin | Edit User Info</h2>
 <br/>
 
 <div class="user edit">
 
     <%= form_for(@user, url: {action: "update"}) do |f| %>
-        <table summary = "Book from fields">
+        <table class = "center" summary = "Book from fields">
             <tr>
                 <th><%= f.label :email %></th>
                 <td><%= f.text_field(:email) %></td>
@@ -37,7 +50,7 @@
             </tr>
         </table>
 
-        <div class="form-buttons">
+        <div class="form-buttons" style = "text-align: center;">
             <%= f.submit("Update User") %>
         </div>
 
@@ -45,4 +58,6 @@
 </div>
 <br/>
 
+<div style = "text-align: center;">
 <%= link_to("<< Back to Users List", users_path, :class => 'back-link')%>
+</div>

@@ -4,13 +4,25 @@
     </div>
 <% end %>
 
+<style>
+body {
+  background-color: Black;
+  opacity: 0.8;
+  color: white;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
-<h2>Admin | Equipment Item Info</h2>
+<h2 style = "text-align:center;">Admin | Equipment Item Info</h2>
 
 
 <div class="equipments show">
 
-  <table summary="equipment detail view">
+  <table class="center" summary="equipment detail view">
     <tr>
       <th>ID</th>
       <td><%= @equipment.id %></td>
@@ -27,9 +39,11 @@
       <th>Available</th>
       <td><%= @equipment.available %></td>
     </tr>
-    
+
   </table>
 </div>
 <br/>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<div style="text-align:center;">
+    <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>

@@ -1,6 +1,8 @@
-<h1>Reservations#edit</h1>
+<h1 style = "text-align: center;">Reservations#edit</h1>
 
-<%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
+<div style = "text-align: center;">
+    <%= link_to("<< Back to List", reservations_path, :class => 'back-link') %>
+</div>
 
 <style>
 body {
@@ -23,7 +25,7 @@ table.center {
     <%= render(:partial => 'form', :locals => {:f => f}) %>
 
 
-    <div class="form-buttons">
+    <div class="form-buttons" style = "text-align: center;">
       <%= f.submit("Update Reservation") %>
     </div>
 
