@@ -118,6 +118,10 @@ class ReservationsController < ApplicationController
       @reservation.renter_name = current_account.first_name + ' ' + current_account.last_name
 
       if @reservation.save # Protect
+        
+        # Sends the user a confirmation email for the reservation
+        ReservationMailer.item_reservation(@equipment, @reservation, current_account).deliver_now
+
         redirect_to(reservations_path) # Possibly change to do a show action
         flash[:alert] = 'Notice: Reservation Complete!'
       else

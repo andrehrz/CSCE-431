@@ -94,6 +94,9 @@ class EquipmentsController < ApplicationController
     # Update its availability
     @equipment.update(available: false)
     redirect_to(show_for_members_equipment_path(@equipment))
+
+    # Sends the user an email confirming the check out
+    ReservationMailer.checkout_reservation(@equipment, current_account).deliver_now
   end
 
   # Make Secure For Error Catching
@@ -104,6 +107,9 @@ class EquipmentsController < ApplicationController
     @equipment.save
     @equipment.update(available: true)
     redirect_to(show_for_members_equipment_path(@equipment))
+
+    # Sends the user an email confirming the check in
+    ReservationMailer.checkin_reservation(@equipment, current_account).deliver_now
   end
 
   def show_for_members
