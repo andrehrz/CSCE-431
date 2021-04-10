@@ -32,6 +32,10 @@
                 <td><%= f.text_field(:secondary_contact) %></td>
             </tr>
             <tr>
+                <th><%= f.label :violation_counter %></th>
+                <td><%= f.text_field(:violation_counter) %></td>
+            </tr>
+            <tr>
                 <th><%= f.label :is_admin %></th>
                 <td><%= f.select(:is_admin, options_for_select([['No', false], ['Yes', true]]), { include_blank: false })%></td>
             </tr>
