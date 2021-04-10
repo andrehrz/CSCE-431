@@ -115,8 +115,8 @@ class ReservationsController < ApplicationController
 
       # Update Item Info For Equipment Log
       @reservation.saved_item = @equipment.name
-      @reservation.renter_name  = current_account.first_name + ' ' + current_account.last_name
-      
+      @reservation.renter_name = current_account.first_name + ' ' + current_account.last_name
+
       if @reservation.save # Protect
         
         # Sends the user a confirmation email for the reservation
@@ -135,8 +135,8 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_list
-      # Get Reservation List
-      @reservations = Reservation.order('id ASC')
+    # Get Reservation List
+    @reservations = Reservation.order('id ASC')
   end
 
   def cancel_item
@@ -147,10 +147,10 @@ class ReservationsController < ApplicationController
     @reservation.future_equip_id = nil
 
     # @reservation.account_id = nil
-    
+
     # Protect
     @reservation.save
-    
+
     # Delete the reservation (possibly).
     # Re-render
     redirect_to(reservations_path) # Possibly change to do a show action
@@ -164,10 +164,10 @@ class ReservationsController < ApplicationController
     @reservation.future_equip_id = nil
 
     # @reservation.account_id = nil
-    
+
     # Protect
     @reservation.save
-    
+
     # Delete the reservation (possibly).
     # Re-render
     redirect_to(reservations_reservation_list_path) # Possibly change to do a show action
@@ -177,13 +177,3 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:event_description, :checkout_date, :checkin_date)
   end
 end
-
-# def check_invalid? (equipment, reslist)
-#   avail = true
-#   reslist.each do |resv|
-#       if (resv.checkout_date <= @future_date) && (@future_date <= resv.checkin_date) && (resv.future_equip_id == equipment.id)
-#         avail = false
-#       end
-#   end
-#   avail == true
-# end

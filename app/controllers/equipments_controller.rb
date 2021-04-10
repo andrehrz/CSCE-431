@@ -1,17 +1,14 @@
 class EquipmentsController < ApplicationController
-    
   require 'date'
 
   # Account Authorization
   def auth_admin
-    if !current_account.is_admin
-      redirect_to(root_path)
-    end
+    redirect_to(root_path) unless current_account.is_admin
   end
 
   # Run auth befor all actions
   before_action :authenticate_account!
-  before_action :auth_admin, only: [:index, :show, :new, :create, :edit, :update, :delete, :destroy]
+  before_action :auth_admin, only: %i[index show new create edit update delete destroy]
 
   ##################################################################################################
 
