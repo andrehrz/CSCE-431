@@ -103,6 +103,14 @@ class EquipmentsController < ApplicationController
   def check_in
     # Break the link to its current reservation
     @equipment = Equipment.find(params[:id])
+
+    if (DateTime.now > @equipment.reservation.checkin_date)
+      ReservationMailer.overdue_reservation(@equipment, current_account).deliver_now
+      @new_violation_count = @equipment.reservation.account.violation_counter + 1
+      @acc = Account.where(:id => current_account.id)
+      @acc.update(:violation_counter => @new_violation_count)
+    end
+
     @equipment.reservation_id = nil
     @equipment.save
     @equipment.update(available: true)

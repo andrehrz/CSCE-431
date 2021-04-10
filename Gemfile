@@ -40,6 +40,9 @@ gem "simple_calendar", "~> 2.0"
 # Support for rspec
 gem 'rexml'
 
+# Environment Variables gem
+gem 'figaro'
+
 # Gem for test coverage stats
 gem 'simplecov', :require => false, :group => :test
 

@@ -82,7 +82,7 @@ Rails.application.configure do
       :port => 587,
       :authentication => :plain,
       :user_name => "apikey",
-      :password => "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",
+      :password => ENV["api_key"],
       :enable_starttls_auto => true
   }
 
