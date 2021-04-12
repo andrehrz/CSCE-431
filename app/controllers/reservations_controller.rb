@@ -187,3 +187,22 @@ end
 #   end
 #   avail == true
 # end
+
+  def admin_cancel_item
+    # Get reservation by its passed in id.
+    @reservation = Reservation.find(params[:id])
+
+    # Set the reservation future equip id to nil.
+    @reservation.future_equip_id = nil
+
+    # @reservation.account_id = nil
+
+    # Protect
+    @reservation.save
+
+    # Delete the reservation (possibly).
+    # Re-render
+    redirect_to(reservations_reservation_list_path) # Possibly change to do a show action
+    flash[:alert] = 'Notice: Reservation Cancelled!'
+  end
+end
