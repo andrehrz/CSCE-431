@@ -45,12 +45,11 @@ ActiveRecord::Schema.define(version: 2021_04_11_040915) do
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "account_id"
-    t.bigint "future_equip_id"
+    t.string "saved_item"
+    t.string "renter_name"
     t.datetime "checkout_date"
     t.datetime "checkin_date"
     t.string "event_description"
-    t.string "saved_item"
-    t.string "renter_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_reservations_on_account_id"
@@ -66,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_040915) do
     t.boolean "is_admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
 end
