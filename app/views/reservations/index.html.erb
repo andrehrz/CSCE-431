@@ -20,73 +20,66 @@ table.listing {
 <h1 style = "text-align: center; margin-top:30px;">Equipment Reservations</h1>
 <br/>
 
-<div class="reservations index">
-    <h3> Select a Date for Reservation </h3>
-    <div class="reservation dates">
-        <%= form_for(@reservation, :url => reservations_equip_reserve_path, :method => 'post') do |f| %>
-            <table summary="date dropdown">
-                <tr>
-                    <th><%= f.label "Reserve Date" %></th>
-                    <td><%= f.date_field(:checkout_date, min: 8.days.from_now, max: 1.year.from_now)%></td>
-                </tr>
-                <tr>
-                    <th><%= f.label "Event Description" %></th>
-                    <td><%= f.text_field(:event_description) %></td>
-                </tr>
-            </table>
-            <div class="form-buttons">
-                <%= f.submit("Pick Date") %>
-            </div>
-        <% end %>
-    </div>
-    <br/>
-</div>
-
-<!--
 <center>
 <div class="container" style="width: 500px; margin: auto; background-color: rgb(230, 230, 230); 
   border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="reservations index">
+        <h3> Select a Date for Reservation </h3>
+        <div class="reservation dates">
+            <%= form_for(@reservation, :url => reservations_equip_reserve_path, :method => 'post') do |f| %>
+                <table summary="date dropdown">
+                    <tr>
+                        <th><%= f.label "Reserve Date" %></th>
+                        <td><%= f.date_field(:checkout_date, min: 8.days.from_now, max: 1.year.from_now)%></td>
+                    </tr>
+                    <tr>
+                        <th><%= f.label "Event Description" %></th>
+                        <td><%= f.text_field(:event_description) %></td>
+                    </tr>
+                </table>
+                <div class="form-buttons">
+                    <%= f.submit("Pick Date") %>
+                </div>
+            <% end %>
+        </div>
+        <br/>
+    </div>
 </div>
 </center>
 <br/>
--->
 
 <h4 style = "text-align: center;">My Future Reservations</h4>
 <br/>
 
-<div class="my equipments">
-    <table class="listing" summary="Equipment List">
-        <tr class="header">
-            <th style="padding:0 15px;"> ID </th>
-            <th style="padding:0 15px;"> Name </th>
-            <th style="padding:0 15px;"> Description </th>
-            <th style="padding:0 15px;"> Reserved Date </th>
-            <th style="padding:0 15px;"> Return By Date </th>
-            <th style="padding:0 15px;"> Actions </th>
-        </tr>
-        <% current_account.reservations.each do |reservation| %>
-        <% if reservation.future_equip_id != nil %>
-        <% @future_item = Equipment.find(reservation.future_equip_id) %>
-        <tr>
-            <td style="padding:0 15px;"><%= @future_item.id%></td>
-            <td style="padding:0 15px;"><%= @future_item.name%></td>
-            <td style="padding:0 15px;"><%= @future_item.description%></td>
-            <td style="padding:0 15px;"><%= reservation.checkout_date %></td>
-            <td style="padding:0 15px;"><%= reservation.checkin_date %></td>
-            <td style="padding:0 15px;"class="actions">
-                <%= link_to("Cancel", cancel_item_reservation_path(reservation), :class => "action cancel_item") %>
-            </td>
-        </tr>
-        <% end %>
-        <% end %>
-    </table>
-</div>
-
-<!--
 <center>
 <div class="container" style="width: 1000px; margin: auto; background-color: rgb(230, 230, 230); 
   border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="my equipments">
+        <table class="listing" summary="Equipment List">
+            <tr class="header">
+                <th style="padding:0 15px;"> ID </th>
+                <th style="padding:0 15px;"> Name </th>
+                <th style="padding:0 15px;"> Description </th>
+                <th style="padding:0 15px;"> Reserved Date </th>
+                <th style="padding:0 15px;"> Return By Date </th>
+                <th style="padding:0 15px;"> Actions </th>
+            </tr>
+            <% current_account.reservations.each do |reservation| %>
+            <% if reservation.future_equip_id != nil %>
+            <% @future_item = Equipment.find(reservation.future_equip_id) %>
+            <tr>
+                <td style="padding:0 15px;"><%= @future_item.id%></td>
+                <td style="padding:0 15px;"><%= @future_item.name%></td>
+                <td style="padding:0 15px;"><%= @future_item.description%></td>
+                <td style="padding:0 15px;"><%= reservation.checkout_date %></td>
+                <td style="padding:0 15px;"><%= reservation.checkin_date %></td>
+                <td style="padding:0 15px;"class="actions">
+                    <%= link_to("Cancel", cancel_item_reservation_path(reservation), :class => "action cancel_item") %>
+                </td>
+            </tr>
+            <% end %>
+            <% end %>
+        </table>
+    </div>
 </div>
 </center>
-<br/>
--->>
