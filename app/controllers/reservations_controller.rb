@@ -77,21 +77,6 @@ class ReservationsController < ApplicationController
     # Display Equipment To Be Reserved
     @equipments = Equipment.order('id ASC')
 
-    @avail_array = []
-
-    # Make avaiable array
-    reslist = Reservation.order('id DESC')
-    @equipments.each do |equipment|
-      item_avail = true
-      reslist.each do |resv|
-        if (resv.checkout_date <= reserve_t) && (return_t <= resv.checkin_date) && (resv.future_equip_id == equipment.id)
-          item_avail = false
-          break
-        end
-      end
-      @avail_array.push(item_avail)
-    end
-
     # Display Reservations That Are Mine
     @reservations = Reservation.order('id DESC')
 
@@ -139,16 +124,14 @@ class ReservationsController < ApplicationController
       if @reservation.save
         # Sends the user a confirmation email for the reservation
         ReservationMailer.item_reservation(@equipment, @reservation, current_account).deliver_now
-        redirect_to(reservations_path)
         flash[:alert] = 'Notice: Reservation Complete!'
       else
-        redirect_to(reservations_path)
         flash[:alert] = 'Notice: Error making reservation!'
       end
     else
-      redirect_to(reservations_path)
       flash[:alert] = 'Notice: Equipment item is already reserved on your day!'
     end
+    redirect_to(reservations_path)
   end
 
   def reservation_list
