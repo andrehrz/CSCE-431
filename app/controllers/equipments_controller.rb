@@ -66,6 +66,14 @@ class EquipmentsController < ApplicationController
 
   def equip_list
     @equipments = Equipment.order('id ASC')
+    @equipments.each do |item|
+      next unless !item.reservation.nil? && Account.find_by(id: item.reservation.account_id).nil?
+
+      # Break the link to its current reservation
+      item.reservation_id = nil
+      item.save
+      item.update(available: true)
+    end
     render('equipments/equip_list')
   end
 
