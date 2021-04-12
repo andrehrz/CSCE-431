@@ -77,6 +77,21 @@ class ReservationsController < ApplicationController
     # Display Equipment To Be Reserved
     @equipments = Equipment.order('id ASC')
 
+    @avail_array = []
+
+    # Make avaiable array
+    reslist = Reservation.order('id DESC')
+    @equipments.each do |equipment|
+      item_avail = true
+      reslist.each do |resv|
+        if (resv.checkout_date <= reserve_t) && (return_t <= resv.checkin_date) && (resv.future_equip_id == equipment.id)
+          item_avail = false
+          break
+        end
+      end
+      @avail_array.push(item_avail)
+    end
+
     # Display Reservations That Are Mine
     @reservations = Reservation.order('id DESC')
 
@@ -177,13 +192,3 @@ class ReservationsController < ApplicationController
     flash[:alert] = 'Notice: Reservation Cancelled!'
   end
 end
-
-# def check_invalid? (equipment, reslist)
-#   avail = true
-#   reslist.each do |resv|
-#       if (resv.checkout_date <= @future_date) && (@future_date <= resv.checkin_date) && (resv.future_equip_id == equipment.id)
-#         avail = false
-#       end
-#   end
-#   avail == true
-# end
