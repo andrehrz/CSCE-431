@@ -1,0 +1,9 @@
+<p>
+  Hi <%= @account.first_name %>
+</p>
+<p>
+ You have checked in <%= @equipment.name %> on <%= DateTime.now %>, which is passed its due date of <%= @equipment.reservation.checkin_date%>
+</p>
+<p>
+  Your violation count is now <%= @account.violation_counter%>
+</p>

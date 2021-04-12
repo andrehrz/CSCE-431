@@ -31,8 +31,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Accounts Gem
 gem 'devise'
 
-gem 'sprockets-rails', :require => 'sprockets/railtie'
-
 # Gem for style sheets
 # gem 'bootstrap', '~> 5.0.0.beta2'
 
@@ -41,6 +39,11 @@ gem "simple_calendar", "~> 2.0"
 
 # Support for rspec
 gem 'rexml'
+
+# Environment Variables gem
+gem 'figaro'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Gem for test coverage stats
 gem 'simplecov', :require => false, :group => :test

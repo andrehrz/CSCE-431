@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require 'action_mailer'
+
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -97,6 +99,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      :address => "smtp.sendgrid.net",
+      :port => 587,
+      :authentication => :plain,
+      :user_name => "apikey",
+      :password => ENV["api_key"],
+      :enable_starttls_auto => true
+  }
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write

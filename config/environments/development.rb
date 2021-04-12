@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require 'action_mailer'
+
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -73,6 +75,16 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      :address => "smtp.sendgrid.net",
+      :port => 587,
+      :authentication => :plain,
+      :user_name => "apikey",
+      :password => ENV["api_key"],
+      :enable_starttls_auto => true
+  }
 
   # devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

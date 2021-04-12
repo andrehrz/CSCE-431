@@ -1,10 +1,9 @@
 $accordion-color: rgb(0, 0, 0);
-$accordion-border-color: rgba(black, .2);
+$accordion-border-color: rgba(black, 0.3);
+$accordion-border-radius: 8px;
 
 $accordion-button-icon: url(https://img.icons8.com/android/24/000000/music-record.png);
 $accordion-button-active-icon: url(https://img.icons8.com/android/24/000000/music-record.png);
-
-
 
 .fa {
 	font-size: 22px;

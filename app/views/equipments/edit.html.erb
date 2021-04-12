@@ -4,21 +4,42 @@
     </div>
 <% end %>
 
-<h2>Admin | Edit Equipment Item</h2>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-<div class="equipments edit">
-
-  <%= form_for(@equipment) do |f| %>
-    
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-
-    <div class="form-buttons">
-      <%= f.submit("Update Equipment") %>
-    </div>
-
-  <% end %>
-</div>
+<h2 style = "text-align: center; margin-top:30px;">Admin | Edit Equipment Item</h2>
 <br/>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<center>
+<div class="container" style="width: 400px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+  <div class="equipments edit">
 
+    <%= form_for(@equipment) do |f| %>
+      
+      <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+      <div class="form-buttons">
+        <%= f.submit("Update Equipment") %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+</center>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;"> 
+  <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>
+<br/>

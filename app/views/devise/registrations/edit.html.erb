@@ -1,5 +1,14 @@
-<div class = "row">
+<style>
+body {
+  /*background-color: rgb(51, 51, 51);*/
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+</style>
 
+
+<div class = "row" style = "padding-left:1%">
   <div class = "column">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <div class="account show" style = "margin-left: 1%;">
@@ -23,6 +32,10 @@
           <tr>
               <th>Secondary Contact: </th>
               <td><%= resource.secondary_contact%></td>
+          </tr>
+          <tr>
+              <th>Violation Count: </th>
+              <td><%= resource.violation_counter%></td>
           </tr>
       </table>
     </div>
