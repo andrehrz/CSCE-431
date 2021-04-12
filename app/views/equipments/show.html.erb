@@ -4,32 +4,51 @@
     </div>
 <% end %>
 
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-<h2>Admin | Equipment Item Info</h2>
-
-
-<div class="equipments show">
-
-  <table summary="equipment detail view">
-    <tr>
-      <th>ID</th>
-      <td><%= @equipment.id %></td>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td><%= @equipment.name %></td>
-    </tr>
-    <tr>
-      <th>Description</th>
-      <td><%= @equipment.description%></td>
-    </tr>
-    <tr>
-      <th>Available</th>
-      <td><%= @equipment.available %></td>
-    </tr>
-    
-  </table>
-</div>
+<h2 style = "text-align: center; margin-top:30px;">Admin | Equipment Item Info</h2>
 <br/>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<center>
+<div class="container" style="width: 300px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+  <div class="equipments show">
+    <table summary="equipment detail view">
+      <tr>
+        <th>ID</th>
+        <td><%= @equipment.id %></td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td><%= @equipment.name %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= @equipment.description%></td>
+      </tr>
+      <tr>
+        <th>Available</th>
+        <td><%= @equipment.available %></td>
+      </tr>
+      
+    </table>
+  </div>
+</div>
+</center>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;"> 
+  <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>
+<br/>

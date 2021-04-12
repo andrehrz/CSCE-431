@@ -1,26 +1,45 @@
-<h2>Log in</h2>
+<style>
+body {
+  /*background-color: rgb(51, 51, 51);*/
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+</style>
+
+<center>
+<h1  style = "padding-left: 1%; margin: 25px;">Log In</h1>
+</center>
+
+<div class="container" style="width: 20%; margin: auto; background-color: white; box-shadow: 0 0 2px #000000; border-radius:10px; ">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <center>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, style: "float:left; padding-left:5%; padding-top:5px;" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "width:90%; margin: auto;" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, style: "float:left; padding-left:5%; padding-top:5px;" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", style: "width:90%; margin: auto;" %>
   </div>
+  </center>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field" style = "padding-left:5%; padding-top:5px;">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="actions" style = "padding-left:5%; padding-top:5px;">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+   
+  <div style = "padding-left:5%; padding-top:5px;">
+  <%= render "devise/shared/links" %>
+  </div>
 
-<%= render "devise/shared/links" %>
+</div>

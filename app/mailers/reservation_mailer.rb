@@ -1,5 +1,4 @@
 class ReservationMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -9,9 +8,8 @@ class ReservationMailer < ApplicationMailer
     @equipment = equipment
     @reservation = reservation
     @name = account.first_name
-    
-    mail to: account.email,
-         subject: "You Made A Reservation"
+
+    mail to: account.email, subject: 'You Made A Reservation'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -19,11 +17,11 @@ class ReservationMailer < ApplicationMailer
   #
   #   en.reservation_mailer.overdue_reservation.subject
   #
-  def overdue_reservation
-    @equipment = equipment.name
-    @name = account.first_name
+  def overdue_reservation(equipment, account)
+    @equipment = equipment
+    @account = account
 
-    mail to: account.email, subject: "You have checked out an item"
+    mail to: account.email, subject: 'You have checked in an item late'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -35,7 +33,7 @@ class ReservationMailer < ApplicationMailer
     @equipment = equipment
     @name = account.first_name
 
-    mail to: account.email, subject: "You have checked in an item"
+    mail to: account.email, subject: 'You have checked in an item'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -47,6 +45,6 @@ class ReservationMailer < ApplicationMailer
     @equipment = equipment
     @name = account.first_name
 
-    mail to: account.email, subject: "You have checked out an item"
+    mail to: account.email, subject: 'You have checked out an item'
   end
 end

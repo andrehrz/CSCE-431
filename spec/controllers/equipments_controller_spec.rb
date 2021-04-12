@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 RSpec.describe Equipment, :type => :request do
   
@@ -246,10 +247,14 @@ RSpec.describe Equipment, :type => :request do
       expect(equipment.available).to_not eq true
     end
 
-    it 'can check out' do
+    it 'can check in' do
       user = Account.create(first_name: "test", last_name: "test", email: 'test@test.com', password: "password", password_confirmation: "password")
+      # res = Reservation.create(account_id: user.id, checkout_date: DateTime.now, checkin_date: DateTime.now+7)
+      equipment = Equipment.create(name: "test", description: "test", available: true)
+      get check_out_equipment_path(equipment)
+
       sign_in user
-      equipment = Equipment.create(name:"test", description:"test", available:false)
+      
       get check_in_equipment_path(equipment)
       equipment.reload
       expect(equipment.available).to eq true

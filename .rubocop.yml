@@ -31,7 +31,7 @@ Metrics/BlockLength:
     - config/**/*
     - spec/**/*
 
-  Metrics/ClassLength:
+Metrics/ClassLength:
   Max: 110
 
 Metrics/MethodLength:
@@ -39,6 +39,9 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 50
+
+Metrics/AbcSize:
+  Max: 52
 
 Style/Documentation:
   Enabled: false

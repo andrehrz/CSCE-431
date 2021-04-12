@@ -65,5 +65,6 @@ RSpec.configure do |config|
   # Set Capybara to use webdrivers from selenium
   Capybara.default_driver = :selenium_chrome
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include Warden::Test::Helpers
 end

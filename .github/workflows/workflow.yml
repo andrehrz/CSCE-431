@@ -25,3 +25,4 @@ jobs:
           gem install rubocop-rspec
       - name: Check code
         run: rubocop
+        

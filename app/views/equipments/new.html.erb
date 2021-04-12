@@ -1,17 +1,40 @@
-<h1>Equipment Create</h1>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-<%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+<h2 style = "text-align: center; margin-top:30px;">Equipment Create</h2>
+<br/>
 
-<div class="equipments new">
-  <h3>Create an Equipment Item</h3>
+<center>
+<div class="container" style="width: 400px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="equipments new">
+      <h3>Create an Equipment Item</h3>
 
-  <%= form_for(@equipment, :url => equipments_path, :method => 'post') do |f| %>
+      <%= form_for(@equipment, :url => equipments_path, :method => 'post') do |f| %>
 
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
+        <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-    <div class="form-buttons">
-      <%= f.submit("Create Equipment") %>
+        <div class="form-buttons">
+          <%= f.submit("Create Equipment") %>
+        </div>
+
+      <% end %>
     </div>
-
-  <% end %>
 </div>
+</center>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;">  
+  <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>
+<br/>

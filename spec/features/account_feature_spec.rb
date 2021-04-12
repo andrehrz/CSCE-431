@@ -38,7 +38,7 @@ RSpec.describe "Account Log In", type: :feature do
     end
 end
 
-# Show integration test
+# Show validation / integration test
 RSpec.describe "Account Shows Info", type: :feature do
     scenario "valid info" do
         visit new_account_session_path
@@ -90,10 +90,10 @@ RSpec.describe "Delete Account", type: :feature do
         page.accept_alert 'Are you sure?' do
             click_button 'Cancel my account'
         end
-        expect(page).to have_content('Log in')
+        expect(page).to have_content('Log In')
         login_as_dummy_user
         sleep(1)
-        expect(page).to have_content('Log in')
+        expect(page).to have_content('Log In')
         sleep(1)
     end
 end
