@@ -38,13 +38,14 @@ table.listing {
                 <th style="padding:0 15px;"> Return By Date </th>
                 <th style="padding:0 15px;"> Action </th>
             </tr>
+            <% counter = 0%>
             <% @equipments.each do |equipment| %>
             <tr>
                 <td style="padding:0 15px;"><%= equipment.id%></td>
                 <td style="padding:0 15px;"><%= equipment.name%></td>
                 <td style="padding:0 15px;"><%= equipment.description%></td>
 
-                <td style="padding:0 15px;">none</td>
+                <td style="padding:0 15px;"><%= @avail_array[counter]%> </td>
 
                 <td style="padding:0 15px;">
                 <% if equipment.reservation%>
@@ -70,6 +71,7 @@ table.listing {
                     <%= link_to("Reserve", reservations_reserve_item_path(id: equipment.id, event: @future_date.event_description, cd: @future_date.checkout_date, ci: @future_date.checkin_date), :class => "action reserve_item") %>
                 </td>
             </tr>
+            <% counter = counter + 1%>
             <% end %>
         </table>
     </div>
