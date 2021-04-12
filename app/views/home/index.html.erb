@@ -1,3 +1,10 @@
+<style>
+body {
+  /*background-color: rgb(51, 51, 51);*/
+  background-color: rgb(200, 200, 200);
+}
+</style>
+
 <div class="home-header" align="center">
 <p class="notice"><%= notice %>
 <p class="alert"><%= alert %>
@@ -5,12 +12,90 @@
 <p> Welcome, <%= current_account.first_name%> <%= current_account.last_name%> </p>
 </div>
 
-<p>Help Stuff Here</p>
-<br/>
-<p>Other Stuff Here</p>
-<br/>
-<p>FAQ</p>
-<br/>
-<p>Contact Admin</p>
+<div class="accordion" id="accordionExample" style="padding-left:100px; padding-right:100px;">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        How To Use
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <center><h3>How to Use</h3></center>
+          <h5>Navigating the Website</h5>
+          <p> The menu bar is on the top right corner. You will be able to find all necessary items there.<p>
+          <h5>Dashboard Tab</h5>
+          <p> The Dashboard page will display your account information. You can update personal information on this page. <br/>
+              Make sure to save your changes by pressing the "Update Account Button" after making your changes.
+          </p>
+          <h5>Equipment Tab</h5>
+          <p> The Equipment page is where you will find all available equipment for checkout or checkin. <br/>
+              Press checkout to checkout an equipment item. You will now see that item belongs to you for one week. <br/>
+              Press checkin to checkin an equipment item you already have checked out. This will return your item so someone else can have it. <br/>
+              Under 'My Checked Out Items', you can find the equiptment's time of check-out and the time the equipment should be returned by. <br/>
+              Please return all equipment by the return time so other members can have a seemless experience just like your's!
+          </p>
+          <h5>Reservations Tab</h5>
+          <p> The Reservations page is where you can reserve an equipment for future use. 
+              Once the date of reservation and the name of event are submitted, you can reserve equipments that are available. 
+          </p>
+          <h5>Sign Out Tab</h5>
+          <p> The Sign Out Tab can be used to sign out of the website.<br/>
+              For your account's security, please sign out of the website after done accessing necessary items. 
+          </p>
+          <br/>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        FAQ
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <center><h3>FAQ</h3></center>
+        <strong><p> Q: How do I reserve an equipment? </p></strong>
+        <p>  A: You can go to the Reservation page by clicking the 'Reservations' button at the top right corner. </p>
+        <strong><p> Q: How many days in advance do I need to make a reservation? </p></strong>
+        <p>  A: You will need to make the reservation at least ?? days in advance. It is for the maintenance and cleaning of the equipments. Thank you for your understanding. </p>
+        <strong><p> Q: If I have a question about reservations, who can I ask?</p></strong>
+        <p>  A: Feel free to send us an email at thedjsofaggieland@gmail.com! We will do our best to address your question and follow up with a helpful answer. </p>
+        <strong><p> Q: I already made a reservation. Where do I find my reservations?</p></strong>
+        <p>  A: All future reservations can be found in the Reservations page. </p>
+        <strong><p> Q: I do not remember when to return my equipment. Where can I find the return by date? </p></strong>
+        <p>  A: Your checked out equipments can be found in the Equipments page. There is a return by date next to the equipment name. </p>
+        <strong><p> Q: Where do I change my password? </p></strong>
+        <p>  A: All account information can be updated in the Dashboard page. </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Contact Admin
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <h4>Contact Admin</h4>
+        <p>Email: thedjsofaggieland@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</div>
 <br/>
 
+<center>
+
+<h4>Follow us here!</h4>
+
+<a href="https://www.facebook.com/TheDJOA" class="fa fa-facebook" target="_blank"></a>
+<a href="https://www.instagram.com/thedjoa/" class="fa fa-instagram" target="_blank"></a>
+<a href="https://twitter.com/TheDJOA" class="fa fa-twitter" target="_blank"></a>
+
+<p>Supported Browser: Chrome </p>
+</center>

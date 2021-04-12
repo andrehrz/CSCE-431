@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_203842) do
+ActiveRecord::Schema.define(version: 2021_04_11_040915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_203842) do
     t.string "phone_number"
     t.string "secondary_contact"
     t.boolean "is_admin", default: false
+    t.integer "violation_counter", default: 0
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -44,12 +45,11 @@ ActiveRecord::Schema.define(version: 2021_02_13_203842) do
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "account_id"
-    t.bigint "future_equip_id"
+    t.string "saved_item"
+    t.string "renter_name"
     t.datetime "checkout_date"
     t.datetime "checkin_date"
     t.string "event_description"
-    t.string "saved_item"
-    t.string "renter_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_reservations_on_account_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_203842) do
     t.boolean "is_admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
 end

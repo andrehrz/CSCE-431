@@ -1,56 +1,68 @@
-<h2>Sign up</h2>
+<style>
+body {
+  /*background-color: rgb(51, 51, 51);*/
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+</style>
+
+<center>
+<h1 style = "padding-left: 1%; margin: 25px; ">Sign Up</h1>
 
 <div class="sign-up-form" style = "margin-left: 1%;">
+ <div class="container" style="width: 20%; margin: auto; background-color: white; border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000;">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first name" %>
+      <%= f.label :first_name, style: "float:left; padding-left:5%; padding-top:5px;"%><br />
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: "form-control", style: "width:90%; margin: auto;"%>
     </div>
     <br/>
 
     <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last name" %>
+      <%= f.label :last_name, style: "float:left; padding-left:5%;"%><br />
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
     <br/>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.label :email, style: "float:left; padding-left:5%;"%><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
     <br/>
 
     <div class="field">
-      <%= f.label :phone_number %><br />
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone" %>
+      <%= f.label :phone_number, style: "float:left; padding-left:5%;" %><br />
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
     <br/>
 
     <div class="field">
-      <%= f.label :secondary_contact %><br />
-      <%= f.text_field :secondary_contact, autofocus: true, autocomplete: "email or phone" %>
+      <%= f.label :secondary_contact, style: "float:left; padding-left:5%;" %><br />
+      <%= f.text_field :secondary_contact, autofocus: true, autocomplete: "email or phone", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
     <br/>
 
-    <div class="field">
-      <%= f.label :password %>
+    <div class="field" style = "padding-bottom: 15px;">
+      <%= f.label :password, style: "float:left; padding-left:5%;" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em style="float:left; padding-left:1%;">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.label :password_confirmation, style: "float:left; padding-left:5%;" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", style: "width:90%; margin: auto;" %>
     </div>
 
-    <div class="actions">
+    <div class="actions" style = "padding: 1%;">
       <%= f.submit "Sign up" %>
     </div>
+    <%= render "devise/shared/links" %>
   <% end %>
+ </div>
 </div>
-
-<%= render "devise/shared/links" %>
+</center>

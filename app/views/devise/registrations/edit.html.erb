@@ -1,5 +1,14 @@
-<div class = "row">
+<style>
+body {
+  /*background-color: rgb(51, 51, 51);*/
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+</style>
 
+
+<div class = "row" style = "padding-left:1%">
   <div class = "column">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <div class="account show" style = "margin-left: 1%;">
@@ -23,6 +32,10 @@
           <tr>
               <th>Secondary Contact: </th>
               <td><%= resource.secondary_contact%></td>
+          </tr>
+          <tr>
+              <th>Violation Count: </th>
+              <td><%= resource.violation_counter%></td>
           </tr>
       </table>
     </div>
@@ -77,7 +90,7 @@
         <br/>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation %><br/>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
         <br/>
@@ -99,7 +112,6 @@
     <h3>Cancel my account</h3>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
-
     <%= link_to("<< Back To Home", root_path, :class => 'back-link') %>
   </div>
 
@@ -108,13 +120,16 @@
   <h2>Admin Actions</h2>
     <table summary="Admin Actions">
           <tr>
-              <th class = button><%= link_to "Reservation Log", action: "equip_log", controller: "/reservations" %></th>
+              <th class = button><%= link_to "Reservation Log", action: "reservation_log", controller: "/reservations" %></th>
           </tr>
           <tr>
               <th class = button><%= link_to "Manage Accounts", action: "index", controller: "/users"%></th>
           </tr>
           <tr>
               <th class = button><%= link_to "Manage Equipment", action: "index", controller: "/equipments" %></th>
+          </tr>
+          <tr>
+              <th class = button><%= link_to "Manage Reservations", action: "reservation_list", controller: "/reservations" %></th>
           </tr>
       </table>
     </div>

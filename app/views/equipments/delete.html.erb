@@ -1,17 +1,46 @@
-<h1>Equipments#delete</h1>
-<%= link_to("<< Back to List", equipments_path, :class => 'back-link') %>
-
-<div class="equipments delete">
-  <h2>Delete equipment</h2>
-
-  <%= form_for(@equipment, :method => 'delete') do |f| %>
-
-    
-    <p>Are You Sure</p>
-
-    <div class="form-buttons">
-      <%= f.submit("Delete equipment") %>
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
     </div>
+<% end %>
 
-  <% end %>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
+
+<h2 style = "text-align: center; margin-top:30px;">Admin | Delete Equipment Item</h2>
+<br/>
+
+
+<center>
+<div class="container" style="width: 400px; margin: auto; background-color: rgb(230, 230, 230); 
+  border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+  <div class="equipments delete">
+
+    <%= form_for(@equipment, :method => 'delete') do |f| %>
+      <p>Are you sure you want to delete: <%= @equipment.name %></p>
+
+      <div class="form-buttons">
+        <%= f.submit("Delete equipment") %>
+      </div>
+
+    <% end %>
+    
+  </div>
 </div>
+</center>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;"> 
+  <%= link_to("<< Back to Equipment List", equipments_path, :class => 'back-link') %>
+</div>
+<br/>

@@ -1,86 +1,115 @@
-<h1>Equipment Check In / Check Out</h1>
-
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
-
-<div class="equipments equip_list">
-    <table class="listing" summary="equipment list">
-        <tr class="header">
-            <th style="padding:0 15px;"> ID </th>
-            <th style="padding:0 15px;"> Name </th>
-            <th style="padding:0 15px;"> Description </th>
-            <th style="padding:0 15px;"> Available </th>
-            <th style="padding:0 15px;"> Current User </th>
-            <th style="padding:0 15px;"> Date Checked Out </th>
-            <th style="padding:0 15px;"> Return By Date </th>
-            <th style="padding:0 15px;"> Actions </th>
-        </tr>
-        <% @equipments.each do |equipment| %>
-        <tr>
-            <td style="padding:0 15px;"><%= equipment.id%></td>
-            <td style="padding:0 15px;"><%= equipment.name%></td>
-            <td style="padding:0 15px;"><%= equipment.description%></td>
-            <td style="padding:0 15px;"><%= equipment.available%></td>
-
-            <td style="padding:0 15px;">
-            <% if equipment.reservation%>
-            <%= equipment.reservation.account.email %>
-            <% end %>
-            </td>
-
-            <td style="padding:0 15px;">            
-            <% if equipment.reservation%>
-            <%= equipment.reservation.checkout_date %>
-            <% end %>
-            </td>
-
-            <td style="padding:0 15px;">            
-            <% if equipment.reservation%>
-            <%= equipment.reservation.checkin_date %>
-            <% end %>
-            </td>
-
-            <td style="padding:0 15px;"class="actions">
-                <%= link_to("Check In", check_in_equipment_path(equipment), :class => "action check_out") %>
-                <%= link_to("Check Out", check_out_equipment_path(equipment), :class => "action check_in") %>
-            </td>
-        </tr>
-        <% end %>
-    </table>
-</div>
-
 <br/>
-<h4>My Checked Out Items</h4>
-<div class="my equipments">
-    <table class="listing" summary="Equipment List">
-        <tr class="header">
-            <th style="padding:0 15px;"> ID </th>
-            <th style="padding:0 15px;"> Name </th>
-            <th style="padding:0 15px;"> Description </th>
-            <th style="padding:0 15px;"> Date Checked Out </th>
-            <th style="padding:0 15px;"> Return By Date </th>
-        </tr>
-        <% current_account.equipments.each do |equipment| %>
-        <tr>
-            <td style="padding:0 15px;"><%= equipment.id%></td>
-            <td style="padding:0 15px;"><%= equipment.name%></td>
-            <td style="padding:0 15px;"><%= equipment.description%></td>
-            
-            <td style="padding:0 15px;">            
-            <% if equipment.reservation%>
-            <%= equipment.reservation.checkout_date %>
-            <% end %>
-            </td>
 
-            <td style="padding:0 15px;">            
-            <% if equipment.reservation%>
-            <%= equipment.reservation.checkin_date %>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
+
+<h1 style="text-align: center; margin-top:30px;">Equipment Check In / Check Out</h1>
+<br/>
+
+<center>
+<div class="container" style="width: 1200px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="equipments equip_list">
+        <table class="listing" summary="equipment list">
+            <tr class="header">
+                <th style="padding:0 15px;"> ID </th>
+                <th style="padding:0 15px;"> Name </th>
+                <th style="padding:0 15px;"> Description </th>
+                <th style="padding:0 15px;"> Available </th>
+                <th style="padding:0 15px;"> Current User </th>
+                <th style="padding:0 15px;"> Date Checked Out </th>
+                <th style="padding:0 15px;"> Return By Date </th>
+                <th style="padding:0 15px;"> Actions </th>
+            </tr>
+            <% @equipments.each do |equipment| %>
+            <tr>
+                <td style="padding:0 15px;"><%= equipment.id%></td>
+                <td style="padding:0 15px;"><%= equipment.name%></td>
+                <td style="padding:0 15px;"><%= equipment.description%></td>
+                <td style="padding:0 15px;"><%= equipment.available%></td>
+
+                <td style="padding:0 15px;">
+                <% if equipment.reservation%>
+                <%= equipment.reservation.account.email %>
+                <% end %>
+                </td>
+
+                <td style="padding:0 15px;">            
+                <% if equipment.reservation%>
+                <%= equipment.reservation.checkout_date %>
+                <% end %>
+                </td>
+
+                <td style="padding:0 15px;">            
+                <% if equipment.reservation%>
+                <%= equipment.reservation.checkin_date %>
+                <% end %>
+                </td>
+
+                <td style="padding:0 15px;"class="actions">
+                    <%= link_to("Check In", check_in_equipment_path(equipment), :class => "action check_out") %>
+                    <%= link_to("Check Out", check_out_equipment_path(equipment), :class => "action check_in") %>
+                </td>
+            </tr>
             <% end %>
-            </td>
-        </tr>
-        <% end %>
-    </table>
+        </table>
+    </div>
 </div>
+</center>
+<br/>
+
+
+<h4 style="text-align: center; margin-top:30px;">My Checked Out Items</h4>
+<br/>
+
+<center>
+<div class="container" style="width: 1050px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="my equipments">
+        <table class="listing" summary="Equipment List">
+            <tr class="header">
+                <th style="padding:0 15px;"> ID </th>
+                <th style="padding:0 15px;"> Name </th>
+                <th style="padding:0 15px;"> Description </th>
+                <th style="padding:0 15px;"> Date Checked Out </th>
+                <th style="padding:0 15px;"> Return By Date </th>
+            </tr>
+            <% current_account.equipments.each do |equipment| %>
+            <tr>
+                <td style="padding:0 15px;"><%= equipment.id%></td>
+                <td style="padding:0 15px;"><%= equipment.name%></td>
+                <td style="padding:0 15px;"><%= equipment.description%></td>
+                
+                <td style="padding:0 15px;">            
+                <% if equipment.reservation%>
+                <%= equipment.reservation.checkout_date %>
+                <% end %>
+                </td>
+
+                <td style="padding:0 15px;">            
+                <% if equipment.reservation%>
+                <%= equipment.reservation.checkin_date %>
+                <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+</center>
+<br/>

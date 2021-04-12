@@ -1,0 +1,40 @@
+$accordion-color: rgb(0, 0, 0);
+$accordion-border-color: rgba(black, 0.3);
+$accordion-border-radius: 8px;
+
+$accordion-button-icon: url(https://img.icons8.com/android/24/000000/music-record.png);
+$accordion-button-active-icon: url(https://img.icons8.com/android/24/000000/music-record.png);
+
+.fa {
+	font-size: 22px;
+	text-decoration: none;
+	border-radius: 50%;
+	opacity: 1.0;
+}
+.fa:hover {
+	color:rgb(0, 0, 0);
+	opacity: 0.9;
+}
+.fa-facebook {
+    padding: 25px;
+	color:rgb(114, 114, 114);
+}
+.fa-instagram {
+    padding: 25px;
+	color:rgb(114, 114, 114);
+}
+.fa-twitter {
+    padding: 25px;
+	color:rgb(114, 114, 114);
+}
+
+ul.iconlist li.icon{
+	list-style: none;
+	display: inline-block;
+}
+
+@import "bootstrap/scss/bootstrap";
+@import "home";
+@import "equipments";
+@import "reservations";
+@import "users";

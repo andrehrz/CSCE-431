@@ -1,50 +1,72 @@
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
 
-<%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+}
+</style>
 
-<div class="users show">
-    <h2>Admin - Showing User Info</h2>
-      
-    <table summary="account info view">
-        <tr>
-            <th>ID</th>
-            <td><%= @user.id %></td>
-        </tr>
-        <tr>
-            <th>First Name</th>
-            <td><%= @user.first_name%></td>
-        </tr>
-        <tr>
-            <th>Last Name</th>
-            <td><%= @user.last_name %></td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td><%= @user.email%></td>
-        </tr>
-        <tr>
-            <th>Phone Number</th>
-            <td><%= @user.phone_number %></td>
-        </tr>
-        <tr>
-            <th>Secondary Contact</th>
-            <td><%= @user.secondary_contact %></td>
-        </tr>
-        <tr>
-            <th>Account Created</th>
-            <td><%= @user.created_at %></td>
-        </tr>
-        <tr>
-            <th>Recent Update</th>
-            <td><%= @user.updated_at %></td>
-        </tr>
-        <tr>
-            <th>Admin</th>
-            <td><%= @user.is_admin %></td>
-        </tr>
-    </table>
+<h2 style="text-align:center; margin-top:30px;">Admin | Showing User Info</h2>
+<br/>
+
+<center>
+<div class="container" style="width: 450px; margin: auto; background-color: rgb(230, 230, 230); border-radius:10px; 
+    outline: 10px black;  box-shadow: 0 0 2px #000000;">
+    <div class="users show">      
+        <table summary="account info view">
+            <tr>
+                <th>ID</th>
+                <td><%= @user.id %></td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td><%= @user.first_name%></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><%= @user.last_name %></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><%= @user.email%></td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td><%= @user.phone_number %></td>
+            </tr>
+            <tr>
+                <th>Secondary Contact</th>
+                <td><%= @user.secondary_contact %></td>
+            </tr>
+            <tr>
+                <th>Account Created</th>
+                <td><%= @user.created_at %></td>
+            </tr>
+            <tr>
+                <th>Recent Update</th>
+                <td><%= @user.updated_at %></td>
+            </tr>
+            <tr>
+                <th>Admin</th>
+                <td><%= @user.is_admin %></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</center>
+<br/>
+
+<div style = "text-align: center;">
+    <%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>
 </div>

@@ -1,25 +1,42 @@
-<h4>History Of Reservations</h4>
+<h2 style = "text-align: center; padding:15px;">History Of Reservations</h2>
 
-<%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'back-link') %>
-
-<div class="All Reservations">
-    <table class="listing" summary="Reservation List">
-        <tr class="header">
-            <th style="padding:0 15px;"> ID </th>
-            <th style="padding:0 15px;"> Renter Name </th>
-            <th style="padding:0 15px;"> Equipment Name </th>
-            <th style="padding:0 15px;"> Checkout Date </th>
-            <th style="padding:0 15px;"> Checkin Date </th>
-            <!-- <th style="padding:0 15px;"> Actions </th> -->
-        </tr>
-        <% @reservations.each do |reservation| %>
-        <tr>
-            <td style="padding:0 15px;"><%= reservation.id%></td>
-            <td style="padding:0 15px;"><%= reservation.renter_name%></td>
-            <td style="padding:0 15px;"><%= reservation.saved_item%></td>
-            <td style="padding:0 15px;"><%= reservation.checkout_date%></td>
-            <td style="padding:0 15px;"><%= reservation.checkin_date%></td>
-        </tr>
-        <% end %>
-    </table>
+<div style = "text-align: center; padding-bottom:20px;">
+    <%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'back-link') %>
 </div>
+
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
+
+<center>
+<div class="container" style="width: 40%; margin: auto; background-color: rgb(230, 230, 230); border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000;">
+    <div class="All Reservations">
+        <table class="listing" summary="Reservation List">
+            <tr class="header">
+                <!-- <th style="padding:0 15px;"> ID </th> -->
+                <th style="padding:0 15px;"> Renter Name </th>
+                <th style="padding:0 15px;"> Equipment Name </th>
+                <th style="padding:0 15px;"> Checkout Date </th>
+                <th style="padding:0 15px;"> Checkin Date </th>
+            </tr>
+            <% @reservations.each do |reservation| %>
+            <tr>
+                <td style="padding:0 15px;"><%= reservation.renter_name%></td>
+                <td style="padding:0 15px;"><%= reservation.saved_item%></td>
+                <td style="padding:0 15px;"><%= reservation.checkout_date%></td>
+                <td style="padding:0 15px;"><%= reservation.checkin_date%></td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+</center>

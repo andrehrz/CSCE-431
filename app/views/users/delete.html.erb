@@ -1,32 +1,54 @@
-<%= link_to("<< Back to List", users_path, :class => "back-link")%>
-
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
 
-<div>
-    <h2>Delete Selected User</h2>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-    <%= form_for(@user, url: {action: "destroy"}, :method => 'delete') do |f| %>
-        <p>Are you sure you want to delete this user?</p>
-        <table summary="account info view">
-        <tr>
-            <th>First Name</th>
-            <td><%= @user.first_name%></td>
-        </tr>
-        <tr>
-            <th>Last Name</th>
-            <td><%= @user.last_name %></td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td><%= @user.email%></td>
-        </tr>
-        </table>
-        <div class="form-buttons">
-            <%= f.submit("Delete User")%>
-        </div>
-    <% end %>
+<h2 style="text-align: center; margin-top:30px;">Admin | Delete Selected User</h2>
+<br/>
+
+<center>
+<div class="container" style="width: 410px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-top:15px; padding-bottom:15px;">
+    <div>
+        <%= form_for(@user, url: {action: "destroy"}, :method => 'delete') do |f| %>
+            <p>Are you sure you want to delete this user?</p>
+            <table summary="account info view">
+            <tr>
+                <th>First Name</th>
+                <td><%= @user.first_name%></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><%= @user.last_name %></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><%= @user.email%></td>
+            </tr>
+            </table>
+            <div class="form-buttons">
+                <%= f.submit("Delete User")%>
+            </div>
+        <% end %>
+    </div>
+</div>
+</center>
+<br/>
+
+<div style = "text-align: center;">
+    <%= link_to("<< Back to Users List", users_path, :class => 'back-link') %>
 </div>

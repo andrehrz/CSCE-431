@@ -1,37 +1,59 @@
-<h1>Admin Equipment Management</h1>
-<%= link_to("<< Back To Equipment", edit_account_registration_path, :class => 'action equip_list')%>
+<% flash.each do |type, msg| %>
+    <div style="color:red;">
+    <%= msg %>
+    </div>
+<% end %>
 
-<div class="equipments index">
 
-   <!--<h2> Equipment </h2>-->
-    <% flash.each do |type, msg| %>
-        <div style="color:red;">
-        <%= msg %>
-        </div>
-    <% end %>
-    <br />
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-    <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
-    <table class="listing" summary="Equipment List">
-        <tr class="header">
-            <th style="padding:0 15px;"> ID </th>
-            <th style="padding:0 15px;"> Name </th>
-            <th style="padding:0 15px;"> Description </th>
-            <th style="padding:0 15px;"> Available </th>
-            <th style="padding:0 15px;"> Actions </th>
-        </tr>
-        <% @equipments.each do |equipment| %>
-        <tr>
-            <td style="padding:0 15px;"><%= equipment.id%></td>
-            <td style="padding:0 15px;"><%= equipment.name%></td>
-            <td style="padding:0 15px;"><%= equipment.description%></td>
-            <td style="padding:0 15px;"><%= equipment.available %> </td>
-            <td style="padding:0 15px;" class="actions">
-                <%= link_to("Show", equipment_path(equipment), :class => "action show") %>
-                <%= link_to("Edit", edit_equipment_path(equipment), :class => "action edit") %>
-                <%= link_to("Delete", delete_equipment_path(equipment), :class => "action delete") %>
-            </td>
-        </tr>
-        <% end %>
-    </table>
+<h1 style="text-align: center; margin-top:30px;">Admin Equipment Management</h1>
+<br/>
+
+<center>
+<div class="container" style="width: 750px; margin: auto; background-color: rgb(230, 230, 230); 
+    border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000; padding-bottom:15px; padding-top:15px;">
+    <div class="equipments index">
+        <%= link_to("ADD NEW EQUIPMENT", new_equipment_path, :class => "action new")%>
+        <table class="listing" summary="Equipment List">
+            <tr class="header">
+                <th style="padding:0 15px;"> ID </th>
+                <th style="padding:0 15px;"> Name </th>
+                <th style="padding:0 15px;"> Description </th>
+                <th style="padding:0 15px;"> Available </th>
+                <th style="padding:0 15px;"> Actions </th>
+            </tr>
+            <% @equipments.each do |equipment| %>
+            <tr>
+                <td style="padding:0 15px;"><%= equipment.id%></td>
+                <td style="padding:0 15px;"><%= equipment.name%></td>
+                <td style="padding:0 15px;"><%= equipment.description%></td>
+                <td style="padding:0 15px;"><%= equipment.available %> </td>
+                <td style="padding:0 15px;" class="actions">
+                    <%= link_to("Show", equipment_path(equipment), :class => "action show") %>
+                    <%= link_to("Edit", edit_equipment_path(equipment), :class => "action edit") %>
+                    <%= link_to("Delete", delete_equipment_path(equipment), :class => "action delete") %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
 </div>
+</center>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;">
+    <%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'action equip_list')%>
+</div>
+<br/>

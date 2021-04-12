@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 RSpec.describe Equipment, :type => :request do
   
@@ -10,7 +11,7 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'can be routed' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         get equipments_path
@@ -26,7 +27,7 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'can be routed' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         get equipment_path(equipment)
@@ -42,7 +43,7 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'can be routed' do
-      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
       sign_in user
       get new_equipment_path
       expect(response).to be_successful 
@@ -57,7 +58,7 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'can be routed' do
-      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
       sign_in user
       equipment = Equipment.create(name:"test", description:"test", available:true)
       get edit_equipment_path(equipment)
@@ -74,7 +75,7 @@ RSpec.describe Equipment, :type => :request do
 
     context 'with valid params' do
       it 'creates a new equipment' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         expect do 
           post equipments_url, params:{:equipment => {:name =>"test", :description => "test", :available => true}}
@@ -82,7 +83,7 @@ RSpec.describe Equipment, :type => :request do
       end
 
       it 'redirects to index' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         post equipments_url, params:{:equipment => {:name =>"test", :description => "test", :available => true}}
         expect(response).to redirect_to(equipments_url)
@@ -91,7 +92,7 @@ RSpec.describe Equipment, :type => :request do
 
     context 'with invalid params' do
       it 'does not create new equipment' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         expect do 
           post equipments_url, params:{:equipment => {:description => "test", :available => true}}
@@ -99,7 +100,7 @@ RSpec.describe Equipment, :type => :request do
       end
 
       it 'renders edit page' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         post equipments_url, params:{:equipment => {:description => "test", :available => true}}
         expect(response).to be_successful
@@ -116,7 +117,7 @@ RSpec.describe Equipment, :type => :request do
 
     context 'with valid params' do
       it 'creates a new equipment' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         patch equipment_url(equipment), params:{:equipment => {:name =>"test change", :description => "test", :available => true}}
@@ -125,7 +126,7 @@ RSpec.describe Equipment, :type => :request do
       end
 
       it 'redirects to index' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         patch equipment_url(equipment), params:{:equipment => {:name =>"test change", :description => "test", :available => true}}
@@ -136,7 +137,7 @@ RSpec.describe Equipment, :type => :request do
 
     context 'with invalid params' do
       it 'does not create a new equipment' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         patch equipment_url(equipment), params:{:equipment => {:name =>nil, :description => "test", :available => true}}
@@ -145,7 +146,7 @@ RSpec.describe Equipment, :type => :request do
       end
 
       it 'redirects to edit' do
-        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+        user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
         sign_in user
         equipment = Equipment.create(name:"test", description:"test", available:true)
         patch equipment_url(equipment), params:{:equipment => {:name =>nil, :description => "test", :available => true}}
@@ -165,7 +166,7 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'deletes the equipment' do
-      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
       sign_in user
       equipment = Equipment.create(name:"test", description:"test", available:true)
       expect do
@@ -182,14 +183,12 @@ RSpec.describe Equipment, :type => :request do
     end
 
     it 'can be routed' do
-      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password")
+      user = Account.create(email: 'test@test.com', password: "password", password_confirmation: "password", is_admin: true)
       sign_in user
       equipment = Equipment.create(name:"test", description:"test", available:true)
       get delete_equipment_path(equipment)
       expect(response).to be_successful
     end
-
-    
   end
 
   describe "get equip_list" do
@@ -204,8 +203,6 @@ RSpec.describe Equipment, :type => :request do
       get '/equipments/equip_list'
       expect(response).to be_successful
     end
-
-    
   end
   
   describe "get equip_list" do
@@ -222,8 +219,6 @@ RSpec.describe Equipment, :type => :request do
       get show_for_members_equipment_path(equipment)
       expect(response).to be_successful
     end
-
-    
   end
 
   describe "get check_out" do
@@ -242,8 +237,6 @@ RSpec.describe Equipment, :type => :request do
       equipment.reload
       expect(equipment.available).to eq false
     end
-    
-    
   end
 
   describe "get check_in" do
@@ -254,21 +247,19 @@ RSpec.describe Equipment, :type => :request do
       expect(equipment.available).to_not eq true
     end
 
-    it 'can check out' do
+    it 'can check in' do
       user = Account.create(first_name: "test", last_name: "test", email: 'test@test.com', password: "password", password_confirmation: "password")
+      # res = Reservation.create(account_id: user.id, checkout_date: DateTime.now, checkin_date: DateTime.now+7)
+      equipment = Equipment.create(name: "test", description: "test", available: true)
+      get check_out_equipment_path(equipment)
+
       sign_in user
-      equipment = Equipment.create(name:"test", description:"test", available:false)
+      
       get check_in_equipment_path(equipment)
       equipment.reload
       expect(equipment.available).to eq true
     end
-    
-    
   end
-
-
-
-
   
   end
 

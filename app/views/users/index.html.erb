@@ -1,32 +1,57 @@
 <% flash.each do |type, msg| %>
-  <div>
+    <div style="color:red;">
     <%= msg %>
-  </div>
+    </div>
 <% end %>
+<br/>
 
-<div class = "books index">
-    <h2>Admin - All Users List</h2>
-    <table class="listing" summary="Book Listings">
-        <tr class="header">
-            <th style="padding:0 15px;">ID</th>
-            <th style="padding:0 15px;">First Name</th>
-            <th style="padding:0 15px;">Last Name</th>
-            <th style="padding:0 15px;">Email</th>
-        </tr>
+<style>
+body {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+  color: black;
+}
+table.listing {
+  margin-left:auto;
+  margin-right:auto;
+  color: black;
+}
+</style>
 
-        <% @users.each do |user| %>
-        <tr>
-            <td style="padding:0 15px;"><%= user.id %></td>
-            <td style="padding:0 15px;"><%= user.first_name %></td>
-            <td style="padding:0 15px;"><%= user.last_name %></td>
-            <td style="padding:0 15px;"><%= user.email %></td>
-            <td style="padding:0 15px;"class="actions">
-                <%= link_to("Show", user_path(user), :class => 'action show') %>
-                <%= link_to("Edit", edit_user_path(user), :class => 'action edit') %>
-                <%= link_to("Delete", delete_user_path(user), :class => 'action delete') %>
-            </td>
-        </tr>
-        <% end %>
-    </table>
+<h2 style = "text-align: center; management-top:30px;">Admin User Management</h2>
+<br/>
+
+<div class="container" style="width: 920px; margin: auto; background-color: rgb(230, 230, 230); border-radius:10px; outline: 10px black;  box-shadow: 0 0 2px #000000;">
+    <div class = "accounts index">
+        <table class="listing" summary="Book Listings">
+            <tr class="header">
+                <th style="padding:0 15px;">ID</th>
+                <th style="padding:0 15px;">First Name</th>
+                <th style="padding:0 15px;">Last Name</th>
+                <th style="padding:0 15px;">Email</th>
+                <th style="padding:0 15px;">Violation Counter</th>
+            </tr>
+
+            <% @users.each do |user| %>
+            <tr>
+                <td style="padding:0 15px;"><%= user.id %></td>
+                <td style="padding:0 15px;"><%= user.first_name %></td>
+                <td style="padding:0 15px;"><%= user.last_name %></td>
+                <td style="padding:0 15px;"><%= user.email %></td>
+                <td style="padding:0 15px;"><%= user.violation_counter%></td>
+                <td style="padding:0 15px;"class="actions">
+                    <%= link_to("Show", user_path(user), :class => 'action show') %>
+                    <%= link_to("Edit", edit_user_path(user), :class => 'action edit') %>
+                    <%= link_to("Delete", delete_user_path(user), :class => 'action delete') %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+<br/>
+
+<div style = "text-align: center; padding-bottom:20px;">
+    <%= link_to("<< Back To Dashboard", edit_account_registration_path, :class => 'back-link') %>
 </div>
 <br/>
