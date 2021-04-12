@@ -1,11 +1,3 @@
-<div style="text-align:center;">
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>
-</div>
-
 <style>
 body {
   background-color: rgb(200, 200, 200);
@@ -18,6 +10,12 @@ table.listing {
   color: black;
 }
 </style>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 
 <h1 style = "text-align: center; margin-top:30px;">Equipment Reservations</h1>
 <br/>
@@ -85,4 +83,3 @@ table.listing {
     </div>
 </div>
 </center>
-<br/>
