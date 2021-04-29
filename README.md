@@ -20,6 +20,7 @@ Deploy the code in Heroku:
 - Change the deplyoment method to github.
 - Choose the respository with the source code from github.
 - Under manual deploy, click main branch, and hit "deploy" to deply the app.
+- (See additional details at buttom for imporant API KEY INFO)
 
 Summary of how we did it:
 
@@ -55,9 +56,13 @@ CD process explanation:
 - After every pull request, a review app can be built based off that pull request.
 - If the review app looks good merge the pull request to staging and then staging will automatically be rebuilt.
 - Build production app by promiting the staging app to production if the staging app is good.
+- (See additional details at buttom for imporant API KEY INFO)
 
 Additional details:
 
-After building the app on heroku, go the the configuration settings of the app and add the api key in our MS TEAMS in order for the program to send emails upon checking in/out or rending an item.
+
 ***IF YOU DO NOT DO THIS THE APP WILL BREAK.***
+After building the app on heroku, go the the configuration settings of the app and add the api key in our MS TEAMS in order for the program to send emails upon checking in/out or rending an item.
+
+API_KEY: LOOK IN MS TEAMS FOR FOLDER CALLED API KEY which has our emailer key. This is required for the app not to break.
 
