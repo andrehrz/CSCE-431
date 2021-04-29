@@ -1,33 +1,17 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe "HomeController", type: :feature  do
-#     # login
+# Creates dummy user to use for login specs
+def login_as_dummy_user
+    login_as(FactoryBot.create(:account, first_name: 'Bill', last_name: 'Nye', email: 'thedjsofaggieland@gmail.com', phone_number: '1112223333', secondary_contact: 'no@gmail.com', password: 'password', is_admin: false))
+end
 
-#     # submit
-
-#     # visit home
-
-#     # test
-
-#     # make get request
-#     it 'signs in user' do
-#         visit new_account_session_path
-#         fill_in 'Email', with: 'cwp684@tamu.edu'
-#         sleep(2)
-#         fill_in 'Password', with: 'cpadmin'
-#         sleep(2)
-#         click_on 'Log in'
-#         sleep(2)
-#         expect(page).to have_content 'HsDADFADGDAGD'
-#         sleep(2)
-#     end
-# end
-
-#     # context 'GET #show' do
-#     #     it 'returns a sucess response' do
-#     #         user = User.create!(...)
-#     #         get :show, params: {id: user.to_param}
-#     #         expect(response).to be_success
-#     #     end
-#     # end
-# end
+RSpec.describe "Makes DJ account admin", type: :feature do
+    scenario "the account is the DJ account" do
+        user = Account.create(first_name: 'Bill', last_name: 'Nye', email: 'thedjsofaggieland@gmail.com', phone_number: '1112223333', secondary_contact: 'no@gmail.com', password: "password", password_confirmation: "password", is_admin: false)
+        sign_in user
+        visit root_path
+        expect(page).to have_content('Home')
+        visit edit_account_registration_path
+        expect(page).to have_content('Admin Actions')
+    end
+end
