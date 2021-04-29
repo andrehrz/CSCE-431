@@ -1,4 +1,4 @@
-#CSCE-431-Instructor_Turnover
+# CSCE-431 Instructor Turnover
 
 Executing the code:
 
