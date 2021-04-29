@@ -58,6 +58,9 @@ CD process explanation:
 
 Additional details:
 
-After building the app on heroku, go the the configuration settings of the app and add the api key in our MS TEAMS in order for the program to send emails upon checking in/out or rending an item.
+
 ***IF YOU DO NOT DO THIS THE APP WILL BREAK.***
+After building the app on heroku, go the the configuration settings of the app and add the api key in our MS TEAMS in order for the program to send emails upon checking in/out or rending an item.
+
+API_KEY: LOOK IN MS TEAMS FOR FOLDER CALLED API KEY which has our emailer key. This is required for the app not to break.
 
