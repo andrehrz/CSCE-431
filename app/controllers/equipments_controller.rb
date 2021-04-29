@@ -131,7 +131,7 @@ class EquipmentsController < ApplicationController
     end
 
     if can_check_in
-      
+
       # Check if item is overdue and send email and increase violation count
       if DateTime.now > @equipment.reservation.checkin_date
         ReservationMailer.overdue_reservation(@equipment, current_account).deliver_now
