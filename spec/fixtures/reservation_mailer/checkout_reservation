@@ -1,0 +1,3 @@
+ReservationMailer#checkout_reservation
+
+Hi, find me in app/views/reservation_mailer/checkout_reservation
