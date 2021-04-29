@@ -15,5 +15,3 @@ class AddExtraAccountFields < ActiveRecord::Migration[6.1]
     remove_column :accounts, :is_admin, :boolean
   end
 end
-
-
